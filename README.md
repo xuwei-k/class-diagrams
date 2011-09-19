@@ -22,3 +22,5 @@ access `http://class-diagrams.appspot.com/full-class-name`
 
 http://class-diagrams.appspot.com/scala.collection.immutable.List
 
+![Scala List](https://github.com/xuwei-k/class-diagrams/raw/master/List.png)
+
