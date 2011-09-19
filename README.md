@@ -12,7 +12,7 @@
 
 ## usage
 
-`http://class-diagrams.appspot.com/full-class-name`
+access `http://class-diagrams.appspot.com/full-class-name`
 
 ### example: Scala List class diagram
 
