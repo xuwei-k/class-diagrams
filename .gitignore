@@ -1,0 +1,8 @@
+/target
+/project/target
+/project/boot/
+/project/plugins/target
+*.swp
+*.class
+*.jar
+
