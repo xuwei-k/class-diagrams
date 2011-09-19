@@ -6,7 +6,9 @@ object ClassDiagramBuild extends Build{
   val sourceCount    = TaskKey[Unit]("source-count")
   val createSxrSlide = TaskKey[Unit]("create-sxr-slide")
 
-  lazy val root = Project("class-diagram", file("."),
+  val projectName = "class-diagrams"
+
+  lazy val root = Project(projectName, file("."),
     settings = {
       Defaults.defaultSettings ++ 
       sbtappengine.AppenginePlugin.webSettings ++ 
@@ -39,14 +41,14 @@ object ClassDiagramBuild extends Build{
         }
         ,createSxrSlide <<= ( sources in Compile , sources in Test ) map{ (main,test) =>
           Seq(main -> "main" ,test -> "test" ).foreach{ case (files,n) =>
-            IO.write( file("slide") / n , create(SxrBaseURL + n + "/",files.map{_.getName}) )
+            IO.write( file("../slide") / n , create(SxrBaseURL + n + "/",files.map{_.getName}) )
           }
         }
       )
     }
   )
 
-  val SxrBaseURL = "http://xuwei-k.github.com/class-diagram/"
+  val SxrBaseURL = "http://xuwei-k.github.com/" + projectName + "/"
 
   def dom(src:String,w:Int,h:Int):xml.Elem = {
     <iframe src={src} width={w.toString} height={h.toString} />

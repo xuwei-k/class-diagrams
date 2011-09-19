@@ -6,9 +6,13 @@
 
 ## Sxr
 
-* main http://xuwei-k.github.com/class-diagrams/main/index.html
+### main
+* http://xuwei-k.github.com/class-diagrams/main/index.html
+* http://gist-slide.appspot.com/1227428/main
 
-* test http://xuwei-k.github.com/class-diagrams/test/index.html
+### test
+* http://xuwei-k.github.com/class-diagrams/test/index.html
+* http://gist-slide.appspot.com/1227428/test
 
 ## usage
 
