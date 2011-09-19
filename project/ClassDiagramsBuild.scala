@@ -20,12 +20,15 @@ object ClassDiagramBuild extends Build{
             ,gae % "appengine-api-1.0-sdk" % gaeSDK 
             ,"net.kindleit" % "gae-runtime" % gaeSDK 
             ,"org.scalatra" %% "scalatra" % "2.0.0"
+            ,"com.mongodb.casbah" % "casbah-core_2.9.0-1" % "2.2.0-SNAPSHOT"
+            ,"org.specs2" %% "specs2" % "1.6.1"
             ,"org.clojure" % "clojure" % "1.3.0-beta2"
           )
         }
         ,resolvers ++= Seq(
             "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
            ,"xuwei-k repo" at "http://xuwei-k.github.com/mvn"
+           ,ScalaToolsSnapshots
          )
         ,addCompilerPlugin("org.scala-tools.sxr" %% "sxr" % "0.2.8-SNAPSHOT")
         ,sourceCount <<= ( sources in Compile , sources in Test ) map{ (main,test) =>
