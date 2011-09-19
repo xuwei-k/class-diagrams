@@ -88,8 +88,8 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
         for {
           p <- parents
           if !exceptList.contains(p)
+          s <- allClassNodes.find { _.clazz == p }
         } yield {
-          val s = allClassNodes.find { _.clazz == p }.get
           <line x1={ S { middleX } } y1={ S { baseY + recH } } x2={ S { s.yoko * w + (recW / 2) } } y2={ S { s.level * h } } stroke="black" stroke-width="1"/>
         }
       }
