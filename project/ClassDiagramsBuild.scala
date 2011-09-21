@@ -7,13 +7,18 @@ object ClassDiagramBuild extends Build{
   val createSxrSlide = TaskKey[Unit]("create-sxr-slide")
 
   val projectName = "class-diagrams"
+  val ScalaV = "2.9.1"
+  val unfilteredProjects = Seq(
+//    "filter","agents","uploads","utils","jetty","jetty-ajp","netty-server",
+//    "netty","json","websockets","oauth"//,"scalate","spec","scalatest"
+  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.5.0"}
 
   lazy val root = Project(projectName, file("."),
     settings = {
       Defaults.defaultSettings ++ 
       sbtappengine.AppenginePlugin.webSettings ++ 
       Seq(
-        scalaVersion := "2.9.1", 
+        scalaVersion := ScalaV , 
         libraryDependencies ++= {
           val (gae,gaeSDK) = ("com.google.appengine","1.5.2")
           Seq(
@@ -22,10 +27,15 @@ object ClassDiagramBuild extends Build{
             ,gae % "appengine-api-1.0-sdk" % gaeSDK 
             ,"net.kindleit" % "gae-runtime" % gaeSDK 
             ,"org.scalatra" %% "scalatra" % "2.0.0"
+            ,"org.jruby" % "jruby" % "1.6.4"
             ,"com.mongodb.casbah" % "casbah-core_2.9.0-1" % "2.2.0-SNAPSHOT"
             ,"org.specs2" %% "specs2" % "1.6.1"
             ,"org.clojure" % "clojure" % "1.3.0-beta2"
-          )
+           //,"org.apache.ant" % "ant" % "1.8.2" % "compile"
+           //,"org.scala-lang" % "scala-compiler" % "2.9.1" % "compile"
+           //,"org.scala-lang" % "scalap" % ScalaV
+           //,"org.scala-lang" % "jline" % ScalaV
+          ) ++ unfilteredProjects
         }
         ,resolvers ++= Seq(
             "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -44,6 +54,19 @@ object ClassDiagramBuild extends Build{
             IO.write( file("../slide") / n , create(SxrBaseURL + n + "/",files.map{_.getName}) )
           }
         }
+/*        ,(sourceGenerators in Compile) <+= (sourceManaged in Compile) map{
+           dir =>
+           IO.unzipURL(
+             new java.net.URL(
+               "http://scala-tools.org/repo-releases/org/scala-lang/scala-compiler/2.9.1/scala-compiler-2.9.1-sources.jar"
+             )
+             ,new File("src/main/scala/")
+             ,new SimpleFilter( s =>
+               ( s.endsWith("scala") || s.endsWith("java")) &&
+               (! s.toString.contains("interpreter"))
+             )
+           ).toSeq
+         }*/
       )
     }
   )
