@@ -9,8 +9,8 @@ object ClassDiagramBuild extends Build{
   val projectName = "class-diagrams"
   val ScalaV = "2.9.1"
   val unfilteredProjects = Seq(
-//    "filter","agents","uploads","utils","jetty","jetty-ajp","netty-server",
-//    "netty","json","websockets","oauth"//,"scalate","spec","scalatest"
+    "filter","agents","uploads","utils","jetty","jetty-ajp","netty-server",
+    "netty","json","websockets","oauth","scalate","spec","scalatest"
   ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.5.0"}
 
   lazy val root = Project(projectName, file("."),
@@ -31,15 +31,17 @@ object ClassDiagramBuild extends Build{
             ,"com.mongodb.casbah" % "casbah-core_2.9.0-1" % "2.2.0-SNAPSHOT"
             ,"org.specs2" %% "specs2" % "1.6.1"
             ,"org.clojure" % "clojure" % "1.3.0-beta2"
-           //,"org.apache.ant" % "ant" % "1.8.2" % "compile"
-           //,"org.scala-lang" % "scala-compiler" % "2.9.1" % "compile"
-           //,"org.scala-lang" % "scalap" % ScalaV
-           //,"org.scala-lang" % "jline" % ScalaV
+            ,"net.lag" % "kestrel" % "2.1.0"
+            ,"org.apache.ant" % "ant" % "1.8.2" % "compile"
+            ,"org.scala-lang" % "scala-compiler" % "2.9.1" % "compile"
+            ,"org.scala-lang" % "scalap" % ScalaV
+            ,"org.scala-lang" % "jline" % ScalaV
           ) ++ unfilteredProjects
         }
         ,resolvers ++= Seq(
             "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
            ,"xuwei-k repo" at "http://xuwei-k.github.com/mvn"
+           ,"twitter repo" at "http://maven.twttr.com"
            ,ScalaToolsSnapshots
          )
         ,addCompilerPlugin("org.scala-tools.sxr" %% "sxr" % "0.2.8-SNAPSHOT")
