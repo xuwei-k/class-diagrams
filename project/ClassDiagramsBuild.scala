@@ -32,8 +32,9 @@ object ClassDiagramBuild extends Build{
             ,"org.specs2" %% "specs2" % "1.6.1"
             ,"org.clojure" % "clojure" % "1.3.0-beta2"
             ,"net.lag" % "kestrel" % "2.1.0"
-            ,"org.apache.ant" % "ant" % "1.8.2" % "compile"
-            ,"org.scala-lang" % "scala-compiler" % "2.9.1" % "compile"
+            ,"org.apache.ant" % "ant" % "1.8.2"
+            ,"net.lag" % "configgy" % "2.0.2"
+            ,"org.scala-lang" % "scala-compiler" % ScalaV
             ,"org.scala-lang" % "scalap" % ScalaV
             ,"org.scala-lang" % "jline" % ScalaV
           ) ++ unfilteredProjects
@@ -56,19 +57,6 @@ object ClassDiagramBuild extends Build{
             IO.write( file("../slide") / n , create(SxrBaseURL + n + "/",files.map{_.getName}) )
           }
         }
-/*        ,(sourceGenerators in Compile) <+= (sourceManaged in Compile) map{
-           dir =>
-           IO.unzipURL(
-             new java.net.URL(
-               "http://scala-tools.org/repo-releases/org/scala-lang/scala-compiler/2.9.1/scala-compiler-2.9.1-sources.jar"
-             )
-             ,new File("src/main/scala/")
-             ,new SimpleFilter( s =>
-               ( s.endsWith("scala") || s.endsWith("java")) &&
-               (! s.toString.contains("interpreter"))
-             )
-           ).toSeq
-         }*/
       )
     }
   )
