@@ -3,7 +3,8 @@ package xuwei_k.classDiagram
 object Reflect {
 
   //Interfaceの数によって、グループ分けして返す
-  private def groupByInterfaseCount(classList: List[Class[_]]) = {
+  // TODO not used ?
+  private def groupByInterfaceCount(classList: List[Class[_]]) = {
 
     val classNames = classList.map { c => (c, c.getSimpleName) }
 
