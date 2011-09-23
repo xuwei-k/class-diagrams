@@ -1,36 +1,41 @@
 package xuwei_k.classDiagram
 import javax.servlet.http._
-import scala.util.control.Exception._
+import scala.util.control.Exception.catching
+import scala.xml.Node
 
 class Front extends HttpServlet {
-  override def doGet(request: HttpServletRequest, response: HttpServletResponse) {
 
-//    Seq[HttpServletRequest => Any](_.getServletPath, _.getRequestURI, _.getRequestURL).foreach(f => println(f(request)))
+  override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
 
-    val name = catching(classOf[Exception]) opt request.getRequestURI.tail.replace(".svg", "")
+    val uri  = req.getRequestURI
+    val name = catching(classOf[Exception]).opt{ uri.tail.replace(".svg", "") }
 
-    response.getWriter.println {
+    resp.getWriter.println {
       name.map { className =>
 
-        println(className)
+        createNodeList(className) match {
+          case None =>
+             <h1>{ "%s not exists".format(className) }</h1>
+          case Some(nodes) => {
+            val resource =
+              if(uri.endsWith(".svg")){
+                SVG( nodes,className)
+              }else{
+                HTML(nodes,className)
+              } 
 
-        createSVG(className) match {
-          case None => <h1>{ "%s not exists".format(className) }</h1>
-          case Some(SVG(_, xml)) => {
-//            response.setContentType("image/svg+xml")
-              response.setContentType("text/html")
-            xml
+            resp.setContentType(resource.contentType)
+            resource.mkString
           }
         }
-      }.getOrElse("error")
+      }.getOrElse(<h1>error</h1>)
     }
   }
   
-  def createSVG[A](className: String): Option[SVG] = {
-    {
-      catching(classOf[ClassNotFoundException]) opt
-        (Class.forName(className).asInstanceOf[Class[A]])
-    }.map { clazz =>
+  def createNodeList[A](className: String): Option[List[Node]] = {
+    catching(classOf[ClassNotFoundException]).opt{
+      (Class.forName(className).asInstanceOf[Class[A]])
+    }.map{ clazz =>
       DiagramService.createClassDiagramByClass(className)(clazz)
     }
   }

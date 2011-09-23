@@ -1,6 +1,7 @@
 package xuwei_k.classDiagram
 
 import Reflect.getAllClassAndTrait
+import scala.xml.Node
 
 object DiagramService {
 
@@ -17,7 +18,7 @@ object DiagramService {
    * @param fileName 保存するファイル名
    * @param objList 作成元のオブジェクト
    */
-  def createClassDiagramByObj(fileName: String)(objList: AnyRef*): SVG = {
+  def createClassDiagramByObj(fileName: String)(objList: AnyRef*): List[Node] = {
     create(fileName, objList.map { _.getClass })
   }
 
@@ -26,15 +27,15 @@ object DiagramService {
    * @param fileName 保存するファイル名
    * @param classNames 作成するクラス名
    */
-  def createClassDiagramByName(fileName: String)(classNames: String*): SVG = {
+  def createClassDiagramByName(fileName: String)(classNames: String*): List[Node] = {
     create(fileName, classNames.map { Class.forName(_) })
   }
 
-  def createClassDiagramByClass(fileName: String)(classes: Class[_]*): SVG = {
+  def createClassDiagramByClass(fileName: String)(classes: Class[_]*): List[Node] = {
     create(fileName, classes)
   }
 
-  private def create(fileName: String, classes: Traversable[Class[_]]): SVG = {
+  private def create(fileName: String, classes: Traversable[Class[_]]): List[Node] = {
 
     import collection.{ mutable => mu }
 
@@ -60,49 +61,9 @@ object DiagramService {
       }
 
     //xmlに変換
-    val xmlNodeList = ClassNode.allClassNodes.filterNot { x => ClassNode.exceptList.contains(x) }.map { _.toXml }
+    ClassNode.allClassNodes.filterNot { x => ClassNode.exceptList.contains(x) }.map { _.toXml }
 
-    createHtml(fileName, xmlNodeList)
   }
-
-  def tweetButton(className: String): String = {
-    <p>
-      <a href="http://twitter.com/share" class="twitter-share-button" data-text={ "#scala" } data-count="horizontal">Tweet</a>
-      <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    </p>
-  }.toString
-
-  private def createHtml(fileName: String, xmlNodeList: List[scala.xml.Node]): SVG = {
-    val width = 5000
-    val height = 2000
-
-    SVG(fileName, {
-      """<!Doctype html><html lang="en">""" + head(fileName) + "<body>" + tweetButton(fileName) +
-        """ <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-      id="body" width="""" + width + """" height="""" + height + """" viewBox="-10 -10 """ + width + " " + height + """">
-      """ + xmlNodeList.mkString(" ", " ", " ") + "</svg></body></html>"
-    })
-  }
-
-  private def createSVG(fileName: String, xmlNodeList: List[scala.xml.Node]): SVG = {
-    val width =  5000
-    val height = 2000
-
-    SVG(fileName, {
-      """<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2000/CR-SVG-20001102/DTD/svg-20001102.dtd">
-      <svg xmlns="http://www.w3.org/2000/svg" 
-     xmlns:xlink="http://www.w3.org/1999/xlink"
-     id="body" width="""" + width + """" height="""" + height + """" viewBox="-10 -10 """ + width + " " + height + """">
-     """ + xmlNodeList.mkString(" ", " ", " ") + "</svg>"
-    })
-  }
-
-  def head(title: String): String = {
-    <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-      <title>{ title }</title>
-    </head>
-  }.mkString("")
 
   /**
    * (ソートしてない)ClassNodeのList作成
