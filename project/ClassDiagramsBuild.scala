@@ -38,6 +38,10 @@ object ClassDiagramBuild extends Build{
             ,"org.scala-lang" % "scala-compiler" % ScalaV
             ,"org.scala-lang" % "scalap" % ScalaV
             ,"org.scala-lang" % "jline" % ScalaV
+            ,"org.scalaz" %% "scalaz" % "6.0.3"
+            ,"org.scalaj" %% "scalaj-http" % "0.2.9"
+            ,"com.foursquare" %% "rogue" % "1.0.24-SNAPSHOT"
+            ,"org.scalaxb" %% "scalaxb" % "0.6.4"
           ) ++ unfilteredProjects
         }
         ,resolvers ++= Seq(
@@ -45,6 +49,7 @@ object ClassDiagramBuild extends Build{
            ,"xuwei-k repo" at "http://xuwei-k.github.com/mvn"
            ,"twitter repo" at "http://maven.twttr.com"
            ,ScalaToolsSnapshots
+//         ,"typesafe snapshot" at "http://typesafe.artifactoryonline.com/typesafe/ivy-snapshots/"
          )
         ,addCompilerPlugin("org.scala-tools.sxr" %% "sxr" % "0.2.8-SNAPSHOT")
         ,sourceCount <<= ( sources in Compile , sources in Test ) map{ (main,test) =>
