@@ -34,6 +34,7 @@ object ClassDiagramBuild extends Build{
             ,"net.lag" % "kestrel" % "2.1.0"
             ,"org.apache.ant" % "ant" % "1.8.2"
             ,"net.lag" % "configgy" % "2.0.2"
+            ,"org.codehaus.groovy" % "groovy" % "1.8.2"
             ,"org.scala-lang" % "scala-compiler" % ScalaV
             ,"org.scala-lang" % "scalap" % ScalaV
             ,"org.scala-lang" % "jline" % ScalaV
