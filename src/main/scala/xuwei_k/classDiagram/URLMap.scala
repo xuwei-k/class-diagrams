@@ -6,7 +6,8 @@ object URLMap{
   private val EPFL_TRAC_2_9_1 = "http://lampsvn.epfl.ch/trac/scala/browser/scala/tags/R_2_9_1_final/src/" 
   private val TRAC_LINE1 = ".scala#L1"
 
-  def apply(fullName: String):String = {
+  def apply(name: String):String = {
+    val fullName = name.split("""\$\$anon""").head
     val path = fullName.replace(".", "/")
 
     def s(prefix:String) = fullName.startsWith(prefix)

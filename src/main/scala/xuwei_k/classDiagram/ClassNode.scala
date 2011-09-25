@@ -87,7 +87,7 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
 }
 
 object ClassNode {
-  var allClassNodes: List[ClassNode] = Nil // TODO change val !
+  var allClassNodes: List[ClassNode] = Nil // TODO change val ! this is not thread save ?
   private val w = 120 //基準位置の横幅
   private val h = 200 //基準位置の縦幅
   private val recW = w - 20 //四角形の幅
@@ -96,5 +96,5 @@ object ClassNode {
   //線をひくのをやめるやつ
   lazy val exceptList = List("scala.ScalaObject", "java.lang.Object").map { Class.forName }
 
-  @inline private implicit def any2String(e: Any): String = e.toString
+  @inline private implicit def int2String(e: Any): String = e.toString
 }

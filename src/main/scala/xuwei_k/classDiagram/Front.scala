@@ -9,15 +9,16 @@ class Front extends HttpServlet {
 
     val uri  = req.getRequestURI
     val name = catching(classOf[Exception]).opt{ uri.tail.replace(".svg", "") }
+    val allClass = req.getParameter("allclass") != null
 
     val result =
     if(name == Some("") || name == None){
-      template(printClassList(""),"class diagrams")
+      template(printClassList("",allClass),"class diagrams")
     }else{
       name.map { className =>
         createNodeList(className) match {
           case None =>
-            template(printClassList(className.replace('.','/')),className) 
+            template(printClassList(className.replace('.','/'),allClass),className) 
           case Some(nodes) => {
             val resource =
               if(uri.endsWith(".svg")){
@@ -46,8 +47,8 @@ class Front extends HttpServlet {
   }
 
 
-  def printClassList(prefix:String):Elem = {
-    val list = JarExtractor.getClassNames(prefix)
+  def printClassList(prefix:String,containsAll:Boolean):Elem = {
+    val list = JarExtractor.getClassNames(prefix,containsAll)
 
     <div>
     <p><span style="font-size:x-large;">{list.size}</span> classes</p>
