@@ -49,7 +49,7 @@ case class HTML(
   val toXML = {
     <html lang="en">
       {header(title)}
-    <body>{ tweetButton("#scala") }{ googlePlusOne }{ makeSVGnode }</body>
+    <body>{ tweetButton("#scala") }{ googlePlusOne }<a href={title + ".svg"} >pure svg version</a>{ makeSVGnode }</body>
     </html>
   }
 
@@ -70,6 +70,6 @@ case class HTML(
     </p>
   }
 
-  val googlePlusOne:Node = <g:plusone />
+  val googlePlusOne:Node = <g:plusone></g:plusone>
 }
 
