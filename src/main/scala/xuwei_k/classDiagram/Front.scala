@@ -47,12 +47,21 @@ class Front extends HttpServlet {
 
 
   def printClassList(prefix:String):Elem = {
-    <ul>{JarExtractor.getClassNames(prefix).map{ name => 
-      <li><a href={ name } >{name}</a></li>
+    val list = JarExtractor.getClassNames(prefix)
+
+    <div>
+    <p><span style="font-size:x-large;">{list.size}</span> classes</p>
+    <ul>{list.map{ name => 
+      <li><a href={ name } >{name}</a><a class={SVG_LINK} href={ name + ".svg"}>SVG</a></li>
     }}</ul>
+    </div>
   }
 
+  val SVG_LINK = "svglink"
+
   val doctype = "<!DOCTYPE html>"
+
+  val STYLE = """ a.""" + SVG_LINK + """{ margin-left:30px; } """
 
   def template(body:Elem,title:String):Elem = {
 <html lang="en">
@@ -61,6 +70,9 @@ class Front extends HttpServlet {
     <title>{title}</title>
     <link rel="shortcut icon" href="./favicon.ico" /> 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <style type="text/css">
+      { STYLE }
+    </style>
   </head>
   <body>
     <p>{ HTML.tweetButton("#scala") }{ HTML.googlePlusOne }<a href="https://github.com/xuwei-k/class-diagrams">source code</a>
