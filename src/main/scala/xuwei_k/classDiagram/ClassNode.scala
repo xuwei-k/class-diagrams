@@ -54,10 +54,17 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
   }
 
   private lazy val fullName = clazz.getName
+  private val SBT_SXR = "http://harrah.github.com/xsbt/latest/sxr/"
+  private val EPFL_TRAC_2_9_1 = "http://lampsvn.epfl.ch/trac/scala/browser/scala/tags/R_2_9_1_final/src/" 
+  private val TRAC_LINE1 = ".scala#L1"
 
   private lazy val url = {
     val path = fullName.replace(".", "/")
-    if (fullName.startsWith("scala.")) {
+    if(Seq("ant","cmd","nsc","reflect","util").exists{ p =>fullName.startsWith("scala.tools." + p ) }){
+      EPFL_TRAC_2_9_1 + "compiler/" + path + TRAC_LINE1
+    } else if (fullName.startsWith("scala.tools.scalap") ){
+      EPFL_TRAC_2_9_1 + "scalap/" + path + TRAC_LINE1 
+    } else if (fullName.startsWith("scala.")) {
       "http://www.scala-lang.org/api/2.9.1/index.html#" + fullName 
     } else if (fullName.startsWith("java")) {
       "http://java.sun.com/javase/ja/6/docs/ja/api/" + path + ".html"
@@ -67,6 +74,12 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
       "http://groovy.codehaus.org/api/" + path + ".html"
     } else if (fullName.startsWith("scalaz.")){
       "http://scalaz.github.com/scalaz/scalaz-2.9.1-6.0.2/doc.sxr/" + path + ".scala"
+    } else if (fullName.startsWith("xsbt")){
+      SBT_SXR + path + ".java"
+    } else if (fullName.startsWith("sbt.")){
+      SBT_SXR + path.split("/").last + ".scala"
+    } else if (fullName.startsWith("akka.")){
+      "http://akka.io/api/akka/1.2/#" + fullName
     } else ""
   }
 

@@ -55,22 +55,26 @@ object ClassDiagramBuild extends Build{
             ,"org.scalaxb" %% "scalaxb" % "0.6.4"
             ,"com.codecommit" %% "anti-xml" % "0.2"
             ,"org.scala-tools" %% "scala-stm" % "0.3"
+            ,"se.scalablesolutions.akka" % "akka" % "1.2"
           ) ++ sbtProjects ++ unfilteredProjects ++ liftProjects
         }
         ,resolvers ++= Seq(
-//            "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
             "Sonatype Nexus Releases" at "https://oss.sonatype.org/content/repositories/releases"
-//           ,"typesafe releases" at "http://typesafe.artifactoryonline.com/typesafe/ivy-releases"
            ,"xuwei-k repo" at "http://xuwei-k.github.com/mvn"
            ,"twitter repo" at "http://maven.twttr.com"
+           ,"guicefruit" at "http://guiceyfruit.googlecode.com/svn/repo/releases/"
            ,ScalaToolsSnapshots
            ,Resolver.url(
-             "typesafe ivy release", 
-             new URL(
-               "http://typesafe.artifactoryonline.com/typesafe/ivy-releases"
-             )
+             "akka", 
+             new URL("http://akka.io/repository")
            )(Resolver.ivyStylePatterns)
+           ,Resolver.url(
+             "typesafe ivy release", 
+             new URL("http://typesafe.artifactoryonline.com/typesafe/ivy-releases")
+           )(Resolver.ivyStylePatterns)
+//         ,"Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 //         ,"typesafe snapshot" at "http://typesafe.artifactoryonline.com/typesafe/ivy-snapshots/"
+//         ,"typesafe releases" at "http://typesafe.artifactoryonline.com/typesafe/ivy-releases"
          )
         ,addCompilerPlugin("org.scala-tools.sxr" %% "sxr" % "0.2.8-SNAPSHOT")
         ,sourceCount <<= ( sources in Compile , sources in Test ) map{ (main,test) =>
