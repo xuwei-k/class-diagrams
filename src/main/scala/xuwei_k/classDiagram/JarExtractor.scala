@@ -17,7 +17,7 @@ object JarExtractor{
           val n = s.toString;
            n.startsWith(prefix) &&
            n.endsWith(clazz) &&
-           n.dropRight(clazz.length + 1).contains("$") == false
+           n.dropRight(clazz.length + 1).contains("$") == false // drop inner classes
         }}
         => s.toString.dropRight(clazz.length).replace('/','.')
       }.toList
