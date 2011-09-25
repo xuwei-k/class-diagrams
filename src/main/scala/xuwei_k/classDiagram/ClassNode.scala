@@ -58,13 +58,14 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
   private lazy val url = {
     val path = fullName.replace(".", "/")
     if (fullName.startsWith("scala")) {
-      "http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/" + path + ".html"
-      //          "http://www.scala-lang.org/api/current/"+path+".html"//普通のpath
+      "http://www.scala-lang.org/api/2.9.1/index.html#" + fullName 
     } else if (fullName.startsWith("java")) {
       "http://java.sun.com/javase/ja/6/docs/ja/api/" + path + ".html"
-    } else {
-      ""
-    }
+    } else if (fullName.startsWith("org.jruby")){
+      "http://www.jruby.org/apidocs/" + path + ".html"
+    } else if (fullName.startsWith("groovy")){
+      "http://groovy.codehaus.org/api/" + path + ".html"
+    } else ""
   }
 
   def toXml: Node = {

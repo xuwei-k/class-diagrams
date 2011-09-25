@@ -62,12 +62,8 @@ class Front extends HttpServlet {
     <link rel="shortcut icon" href="./favicon.ico" /> 
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
   </head>
-
   <body>
-    <h1>Class Diagram</h1>
-    <p><g:plusone></g:plusone></p>
-    <p><a href="https://github.com/xuwei-k/class-diagrams">source code</a></p>
-    <p>
+    <p>{ HTML.tweetButton("#scala") }{ HTML.googlePlusOne }<a href="https://github.com/xuwei-k/class-diagrams">source code</a>
       <img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
       Developing by <a href="http://twitter.com/#!/xuwei_k" target="_blank">xuwei_k</a>
     </p>

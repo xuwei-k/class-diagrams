@@ -43,6 +43,7 @@ case class HTML(
     nodes : List[Node],
     title : String
   ) extends XmlResource{
+  import HTML._
 
   val contentType = "text/html"
   val doctype = "<!DOCTYPE html>" 
@@ -54,6 +55,10 @@ case class HTML(
   }
 
   val mkString = { doctype + toXML.toString }
+
+}
+
+object HTML {
 
   def header(title:String):Node = {
     <head>

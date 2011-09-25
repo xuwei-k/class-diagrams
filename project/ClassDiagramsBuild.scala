@@ -38,7 +38,7 @@ object ClassDiagramBuild extends Build{
             ,"org.scala-lang" % "scala-compiler" % ScalaV
             ,"org.scala-lang" % "scalap" % ScalaV
             ,"org.scala-lang" % "jline" % ScalaV
-            ,"org.scalaz" %% "scalaz" % "6.0.3"
+            ,"org.scalaz" %% "scalaz-full" % "6.0.3"
             ,"org.scalaj" %% "scalaj-http" % "0.2.9"
             ,"com.foursquare" %% "rogue" % "1.0.24-SNAPSHOT"
             ,"org.scalaxb" %% "scalaxb" % "0.6.4"
