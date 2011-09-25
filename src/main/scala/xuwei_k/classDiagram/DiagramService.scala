@@ -35,8 +35,6 @@ object DiagramService {
 
   private def create(name: String, classes: Traversable[Class[_]]): List[Node] = {
 
-    import collection.{ mutable => mu }
-
     val result =
       sortByInheritance({
         classes.flatMap { makeClassNodes }.toList ++

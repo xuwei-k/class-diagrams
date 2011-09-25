@@ -4,6 +4,7 @@ object Reflect {
 
   //Interfaceの数によって、グループ分けして返す
   // TODO not used ?
+/*
   private def groupByInterfaceCount(classList: List[Class[_]]) = {
 
     val classNames = classList.map { c => (c, c.getSimpleName) }
@@ -39,7 +40,7 @@ object Reflect {
           })
     }.toList.sortBy { case (i, _) => i }
   }
-
+*/
   private def getSuperClasses(clazz: Class[_]): List[Class[_]] = {
 
     @scala.annotation.tailrec

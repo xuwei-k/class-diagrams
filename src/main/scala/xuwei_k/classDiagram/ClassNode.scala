@@ -68,10 +68,10 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
 
     <g>
       <a xlink:href={ url } target="_blank">
-        <rect x={ S { baseX } } y={ S { baseY } } width={ S { recW } } height={ S { recH } } fill={ if (clazz.isInterface) "#799F5A" else "#7996AC" } stroke="black" stroke-width="2">
+        <rect x={ baseX } y={ baseY } width={ recW } height={ recH } fill={ if (clazz.isInterface) "#799F5A" else "#7996AC" } stroke="black" stroke-width="2">
         </rect>
-        <text x={ S { baseX + 5 } } y={ S { baseY + 15 } } font-size={ S { packageFontSize } }>{ fullName.replace(simpleName, "") }</text>
-        <text x={ S { baseX + 5 } } y={ S { baseY + packageFontSize + 24 } } font-size={ S { fontSize } }>{ simpleName }</text>
+        <text x={ baseX + 5 } y={ baseY + 15 } font-size={ packageFontSize }>{ fullName.replace(simpleName, "") }</text>
+        <text x={ baseX + 5 } y={ baseY + packageFontSize + 24 } font-size={ fontSize }>{ simpleName }</text>
       </a>
       {
         for {
@@ -79,7 +79,7 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
           if !exceptList.contains(p)
           s <- allClassNodes.find { _.clazz == p }
         } yield {
-          <line x1={ S { middleX } } y1={ S { baseY + recH } } x2={ S { s.yoko * w + (recW / 2) } } y2={ S { s.level * h } } stroke="black" stroke-width="1"/>
+          <line x1={ middleX } y1={ baseY + recH } x2={ s.yoko * w + (recW / 2) } y2={ s.level * h } stroke="black" stroke-width="1"/>
         }
       }
     </g>
@@ -87,7 +87,7 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
 }
 
 object ClassNode {
-  var allClassNodes: List[ClassNode] = Nil
+  var allClassNodes: List[ClassNode] = Nil // TODO change val !
   private val w = 120 //基準位置の横幅
   private val h = 200 //基準位置の縦幅
   private val recW = w - 20 //四角形の幅
@@ -95,7 +95,6 @@ object ClassNode {
 
   //線をひくのをやめるやつ
   lazy val exceptList = List("scala.ScalaObject", "java.lang.Object").map { Class.forName }
-  
-    /** すごく多く呼び出すから別名つけただけ */
-  @inline private def S(e: Any): String = e.toString
+
+  @inline private implicit def any2String(e: Any): String = e.toString
 }
