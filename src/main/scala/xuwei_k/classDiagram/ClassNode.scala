@@ -57,7 +57,7 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
 
   private lazy val url = {
     val path = fullName.replace(".", "/")
-    if (fullName.startsWith("scala")) {
+    if (fullName.startsWith("scala.")) {
       "http://www.scala-lang.org/api/2.9.1/index.html#" + fullName 
     } else if (fullName.startsWith("java")) {
       "http://java.sun.com/javase/ja/6/docs/ja/api/" + path + ".html"
@@ -65,6 +65,8 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
       "http://www.jruby.org/apidocs/" + path + ".html"
     } else if (fullName.startsWith("groovy")){
       "http://groovy.codehaus.org/api/" + path + ".html"
+    } else if (fullName.startsWith("scalaz.")){
+      "http://scalaz.github.com/scalaz/scalaz-2.9.1-6.0.2/doc.sxr/" + path + ".scala"
     } else ""
   }
 

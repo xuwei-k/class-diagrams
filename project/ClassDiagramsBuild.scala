@@ -13,6 +13,17 @@ object ClassDiagramBuild extends Build{
     "netty","json","websockets","oauth","scalate","spec","scalatest"
   ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.5.0"}
 
+  val liftProjects = Seq(
+    "common","json","actor","util","json-scalaz","json-ext"
+  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.4-M4"}
+
+  val sbtProjects = Seq(
+    "actions","api","cache","classfile","classpath","collections","compile","completion",
+    "control","datatype-generator","discovery","incremental-compiler","io","ivy",
+    "launcher-interface","logging","main","persist","process","run","sbt","scripted-sbt",
+    "scripted-framework","scripted-plugin","task-system","tasks","testing","tracking"
+  ).map{ "org.scala-tools.sbt" %% _ % "0.11.0"}
+
   lazy val root = Project(projectName, file("."),
     settings = {
       Defaults.defaultSettings ++ 
@@ -26,11 +37,11 @@ object ClassDiagramBuild extends Build{
             ,gae % "appengine-java-sdk" % gaeSDK 
             ,gae % "appengine-api-1.0-sdk" % gaeSDK 
             ,"net.kindleit" % "gae-runtime" % gaeSDK 
-            ,"org.scalatra" %% "scalatra" % "2.0.0"
+            ,"org.scalatra" %% "scalatra" % "2.0.1"
             ,"org.jruby" % "jruby" % "1.6.4"
             ,"com.mongodb.casbah" % "casbah-core_2.9.0-1" % "2.2.0-SNAPSHOT"
             ,"org.specs2" %% "specs2" % "1.6.1"
-            ,"org.clojure" % "clojure" % "1.3.0-beta2"
+            ,"org.clojure" % "clojure" % "1.3.0"
             ,"net.lag" % "kestrel" % "2.1.0"
             ,"org.apache.ant" % "ant" % "1.8.2"
             ,"net.lag" % "configgy" % "2.0.2"
@@ -42,13 +53,23 @@ object ClassDiagramBuild extends Build{
             ,"org.scalaj" %% "scalaj-http" % "0.2.9"
             ,"com.foursquare" %% "rogue" % "1.0.24-SNAPSHOT"
             ,"org.scalaxb" %% "scalaxb" % "0.6.4"
-          ) ++ unfilteredProjects
+            ,"com.codecommit" %% "anti-xml" % "0.2"
+            ,"org.scala-tools" %% "scala-stm" % "0.3"
+          ) ++ sbtProjects ++ unfilteredProjects ++ liftProjects
         }
         ,resolvers ++= Seq(
-            "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+//            "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+            "Sonatype Nexus Releases" at "https://oss.sonatype.org/content/repositories/releases"
+//           ,"typesafe releases" at "http://typesafe.artifactoryonline.com/typesafe/ivy-releases"
            ,"xuwei-k repo" at "http://xuwei-k.github.com/mvn"
            ,"twitter repo" at "http://maven.twttr.com"
            ,ScalaToolsSnapshots
+           ,Resolver.url(
+             "typesafe ivy release", 
+             new URL(
+               "http://typesafe.artifactoryonline.com/typesafe/ivy-releases"
+             )
+           )(Resolver.ivyStylePatterns)
 //         ,"typesafe snapshot" at "http://typesafe.artifactoryonline.com/typesafe/ivy-snapshots/"
          )
         ,addCompilerPlugin("org.scala-tools.sxr" %% "sxr" % "0.2.8-SNAPSHOT")
