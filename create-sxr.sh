@@ -1,6 +1,6 @@
 git pull
 
-sbt10 compile
+sbt10 clean compile
 
 rm -rf ../gh-pages/main/*
 rm -rf ../gh-pages/test/*
