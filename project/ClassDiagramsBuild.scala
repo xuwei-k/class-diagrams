@@ -24,6 +24,8 @@ object ClassDiagramBuild extends Build{
     "scripted-framework","scripted-plugin","task-system","tasks","testing","tracking"
   ).map{ "org.scala-tools.sbt" %% _ % "0.11.0"}
 
+  val mirah = Seq("mirah","mirah-complete").map{"org.mirah" % _ % "0.0.7"}
+
   lazy val root = Project(projectName, file("."),
     settings = {
       Defaults.defaultSettings ++ 
@@ -56,7 +58,7 @@ object ClassDiagramBuild extends Build{
             ,"com.codecommit" %% "anti-xml" % "0.2"
             ,"org.scala-tools" %% "scala-stm" % "0.3"
             ,"se.scalablesolutions.akka" % "akka" % "1.2"
-          ) ++ sbtProjects ++ unfilteredProjects ++ liftProjects
+          ) ++ sbtProjects ++ unfilteredProjects ++ liftProjects ++ mirah
         }
         ,resolvers ++= Seq(
             "Sonatype Nexus Releases" at "https://oss.sonatype.org/content/repositories/releases"
