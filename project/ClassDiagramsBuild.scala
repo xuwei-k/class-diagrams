@@ -41,12 +41,11 @@ object ClassDiagramBuild extends Build{
             ,"net.kindleit" % "gae-runtime" % gaeSDK 
             ,"org.scalatra" %% "scalatra" % "2.0.1"
             ,"org.jruby" % "jruby" % "1.6.4"
-            ,"com.mongodb.casbah" % "casbah-core_2.9.0-1" % "2.2.0-SNAPSHOT"
+            ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
             ,"org.specs2" %% "specs2" % "1.6.1"
             ,"org.clojure" % "clojure" % "1.3.0"
-            ,"net.lag" % "kestrel" % "2.1.0"
-            ,"org.apache.ant" % "ant" % "1.8.2"
-            ,"net.lag" % "configgy" % "2.0.2"
+//            ,"net.lag" % "kestrel" % "2.1.0"
+//            ,"net.lag" % "configgy" % "2.0.2"
             ,"org.codehaus.groovy" % "groovy" % "1.8.2"
             ,"org.scala-lang" % "scala-compiler" % ScalaV
             ,"org.scala-lang" % "scalap" % ScalaV
