@@ -29,7 +29,7 @@ object ClassDiagramBuild extends Build{
   lazy val root = Project(projectName, file("."),
     settings = {
       Defaults.defaultSettings ++ 
-      sbtappengine.AppenginePlugin.webSettings ++ 
+      sbtappengine.Plugin.webSettings ++ 
       Seq(
         scalaVersion := ScalaV , 
         libraryDependencies ++= {
