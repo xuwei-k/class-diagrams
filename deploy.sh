@@ -1,2 +1,2 @@
-sbt11 "appengine:deploy --enable_jar_splitting"
+sbt11 "appengine-deploy --enable_jar_splitting"
 
