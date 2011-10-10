@@ -1,13 +1,13 @@
 git pull
 
-sbt10 clean compile
+sbt11 clean compile
 
 rm -rf ../gh-pages/main/*
 rm -rf ../gh-pages/test/*
 
-cp target/scala-2.9.1.final/classes.sxr/* ../gh-pages/main/
+cp -r target/scala-2.9.1/classes.sxr/* ../gh-pages/main/
 
-cp target/scala-2.9.1.final/test-classes.sxr/* ../gh-pages/test/
+cp -r target/scala-2.9.1/test-classes.sxr/* ../gh-pages/test/
 
 cd ../gh-pages/
 

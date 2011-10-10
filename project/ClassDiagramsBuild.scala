@@ -78,6 +78,7 @@ object ClassDiagramBuild extends Build{
 //         ,"typesafe releases" at "http://typesafe.artifactoryonline.com/typesafe/ivy-releases"
          )
         ,addCompilerPlugin("org.scala-tools.sxr" %% "sxr" % "0.2.8-SNAPSHOT")
+        ,scalacOptions <+= scalaSource in Compile map { "-P:sxr:base-directory:" + _.getAbsolutePath }
         ,sourceCount <<= ( sources in Compile , sources in Test ) map{ (main,test) =>
            println{
              "\nmain " + main.map{f => IO.readLines(f).size}.sum +
