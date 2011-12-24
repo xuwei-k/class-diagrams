@@ -39,7 +39,7 @@ object URLMap{
     } else if (s("net.liftweb.")){
       "http://scala-tools.org/mvnsites/liftweb-2.4-M4/#"+ fullName
     } else if (s("android.")){
-      "http://developer.android.com/reference/" + path + ".html"
+      "http://developer.android.com/reference/" + path.replace('$','.') + ".html"
     } else ""
   }
 }
