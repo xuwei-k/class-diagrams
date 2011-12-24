@@ -3,7 +3,7 @@ package xuwei_k.classDiagram
 object URLMap{
 
   private val SBT_SXR = "http://harrah.github.com/xsbt/latest/sxr/"
-  private val EPFL_TRAC_2_9_1 = "http://lampsvn.epfl.ch/trac/scala/browser/scala/tags/R_2_9_1_final/src/" 
+  private val EPFL_TRAC_2_9_1 = "http://lampsvn.epfl.ch/trac/scala/browser/scala/tags/R_2_9_1_final/src/"
   private val TRAC_LINE1 = ".scala#L1"
 
   def apply(name: String):String = {
@@ -15,9 +15,9 @@ object URLMap{
     if(Seq("ant","cmd","nsc","reflect","util").exists{ p =>s("scala.tools." + p ) }){
       EPFL_TRAC_2_9_1 + "compiler/" + path + TRAC_LINE1
     } else if (s("scala.tools.scalap") ){
-      EPFL_TRAC_2_9_1 + "scalap/" + path + TRAC_LINE1 
+      EPFL_TRAC_2_9_1 + "scalap/" + path + TRAC_LINE1
     } else if (s("scala.")) {
-      "http://www.scala-lang.org/api/2.9.1/index.html#" + fullName 
+      "http://www.scala-lang.org/api/2.9.1/index.html#" + fullName
     } else if (s("java")) {
       "http://java.sun.com/javase/ja/6/docs/ja/api/" + path + ".html"
     } else if (s("org.jruby")){
@@ -38,6 +38,8 @@ object URLMap{
       "http://etorreborre.github.com/specs2/api/#" + fullName
     } else if (s("net.liftweb.")){
       "http://scala-tools.org/mvnsites/liftweb-2.4-M4/#"+ fullName
+    } else if (s("android.")){
+      "http://developer.android.com/reference/" + path + ".html"
     } else ""
   }
 }

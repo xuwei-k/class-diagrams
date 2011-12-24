@@ -40,7 +40,7 @@ object ClassDiagramBuild extends Build{
             ,"org.clojure" % "clojure" % "1.3.0"
 //            ,"net.lag" % "kestrel" % "2.1.0"
 //            ,"net.lag" % "configgy" % "2.0.2"
-            ,"org.codehaus.groovy" % "groovy" % "1.8.2"
+//            ,"org.codehaus.groovy" % "groovy" % "1.8.2"
             ,"org.scala-lang" % "scala-compiler" % ScalaV
             ,"org.scala-lang" % "scalap" % ScalaV
             ,"org.scala-lang" % "jline" % ScalaV
@@ -52,6 +52,7 @@ object ClassDiagramBuild extends Build{
             ,"org.scala-tools" %% "scala-stm" % "0.4"
             ,"se.scalablesolutions.akka" % "akka" % "1.2"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
+            ,"com.google.android" % "android" % "2.2.1"
           ) ++ unfilteredProjects ++ liftProjects ++ mirah
         }
         ,resolvers ++= Seq(
