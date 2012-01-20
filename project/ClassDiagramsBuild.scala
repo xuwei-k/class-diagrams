@@ -26,14 +26,10 @@ object ClassDiagramBuild extends Build{
       Seq(
         scalaVersion := ScalaV ,
         libraryDependencies <++= sbtDependency{ sd =>
-          val (gae,gaeSDK) = ("com.google.appengine","1.5.2")
           Seq(
              sd
             ,"org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "container"
             ,"javax.servlet" % "servlet-api" % "2.5"
-            ,gae % "appengine-java-sdk" % gaeSDK
-            ,gae % "appengine-api-1.0-sdk" % gaeSDK
-            ,"net.kindleit" % "gae-runtime" % gaeSDK
             ,"org.scalatra" %% "scalatra" % "2.0.2"
             ,"org.jruby" % "jruby" % "1.6.5"
             ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
