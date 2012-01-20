@@ -15,7 +15,7 @@ object ClassDiagramBuild extends Build{
 
   val liftProjects = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
-  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.4-M4"}
+  ).map{n => "net.liftweb" %% ("lift-" + n ) % "2.4"}
 
   val mirah = Seq("mirah","mirah-complete").map{"org.mirah" % _ % "0.0.7"}
 
@@ -29,11 +29,12 @@ object ClassDiagramBuild extends Build{
           val (gae,gaeSDK) = ("com.google.appengine","1.5.2")
           Seq(
              sd
+            ,"org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "container"
             ,"javax.servlet" % "servlet-api" % "2.5"
             ,gae % "appengine-java-sdk" % gaeSDK
             ,gae % "appengine-api-1.0-sdk" % gaeSDK
             ,"net.kindleit" % "gae-runtime" % gaeSDK
-            ,"org.scalatra" %% "scalatra" % "2.0.1"
+            ,"org.scalatra" %% "scalatra" % "2.0.2"
             ,"org.jruby" % "jruby" % "1.6.5"
             ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
             ,"org.specs2" %% "specs2" % "1.6.1"
@@ -52,7 +53,7 @@ object ClassDiagramBuild extends Build{
             ,"org.scala-tools" %% "scala-stm" % "0.4"
             ,"se.scalablesolutions.akka" % "akka" % "1.2"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
-            ,"com.google.android" % "android" % "2.2.1"
+            ,"com.google.android" % "android" % "2.1.2"
           ) ++ unfilteredProjects ++ liftProjects ++ mirah
         }
         ,resolvers ++= Seq(
