@@ -7,7 +7,7 @@ object URLMap{
   private[this] val LINE1 = ".scala#L1"
 
   def apply(name: String):String = {
-    val fullName = name.split("""\$\$anon""").head
+    val fullName = name.split("""\$""").head
     val path = fullName.replace(".", "/")
 
     def s(prefix:String) = fullName.startsWith(prefix)
