@@ -19,6 +19,11 @@ object ClassDiagramBuild extends Build{
 
   val mirah = Seq("mirah","mirah-complete").map{"org.mirah" % _ % "0.0.7"}
 
+  // TODO util-thrift dependencies unresolve :(
+  val twitterUtils = Seq(
+    "codec","zk","logging","reflect","zk-common","core","hashing","eval","collection"
+  ).map{n => "com.twitter" %% ("util-"+n) % "1.12.13" }
+
   lazy val root = Project(projectName, file("."),
     settings = {
       Defaults.defaultSettings ++
@@ -35,8 +40,6 @@ object ClassDiagramBuild extends Build{
             ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
             ,"org.specs2" %% "specs2" % "1.6.1"
             ,"org.clojure" % "clojure" % "1.3.0"
-//            ,"net.lag" % "kestrel" % "2.1.0"
-//            ,"net.lag" % "configgy" % "2.0.2"
 //            ,"org.codehaus.groovy" % "groovy" % "1.8.2"
             ,"org.scala-lang" % "scala-compiler" % ScalaV
             ,"org.scala-lang" % "scalap" % ScalaV
@@ -50,12 +53,12 @@ object ClassDiagramBuild extends Build{
             ,"se.scalablesolutions.akka" % "akka" % "1.2"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
-          ) ++ unfilteredProjects ++ liftProjects ++ mirah
+          ) ++ unfilteredProjects ++ liftProjects ++ mirah ++ twitterUtils
         }
         ,resolvers ++= Seq(
             "Sonatype Nexus Releases" at "https://oss.sonatype.org/content/repositories/releases"
            ,"xuwei-k repo" at "http://xuwei-k.github.com/mvn"
-//         ,"twitter repo" at "http://maven.twttr.com"
+           ,"twitter repo" at "http://maven.twttr.com"
            ,"guicefruit" at "http://guiceyfruit.googlecode.com/svn/repo/releases/"
            ,ScalaToolsSnapshots
            ,"akka" at "http://akka.io/repository"
