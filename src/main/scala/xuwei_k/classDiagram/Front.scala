@@ -4,12 +4,13 @@ import scala.util.control.Exception.catching
 import scala.xml.{Elem,Node}
 
 class Front extends HttpServlet {
+  val ALL_CLASS = "allclass"
 
   override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
 
     val uri  = req.getRequestURI
     val name = catching(classOf[Exception]).opt{ uri.tail.replace(".svg", "") }
-    val allClass = req.getParameter("allclass") != null
+    val allClass = req.getParameter(ALL_CLASS) != null
 
     val result =
     if(name == Some("") || name == None){
@@ -18,26 +19,26 @@ class Front extends HttpServlet {
       name.map { className =>
         createNodeList(className) match {
           case None =>
-            template(printClassList(className.replace('.','/'),allClass),className) 
+            template(printClassList(className,allClass),className)
           case Some(nodes) => {
             val resource =
               if(uri.endsWith(".svg")){
                 SVG( nodes,className)
               }else{
                 HTML(nodes,className)
-              } 
+              }
 
             resp.setContentType(resource.contentType)
             resource.mkString
           }
         }
       }.getOrElse(<h1>error</h1>)
-    } 
+    }
 
-    resp.getWriter.println(result) 
+    resp.getWriter.println(result)
 
   }
-  
+
   def createNodeList[A](className: String): Option[List[Node]] = {
     catching(classOf[ClassNotFoundException]).opt{
       (Class.forName(className).asInstanceOf[Class[A]])
@@ -48,11 +49,18 @@ class Front extends HttpServlet {
 
 
   def printClassList(prefix:String,containsAll:Boolean):Elem = {
-    val list = JarExtractor.getClassNames(prefix,containsAll)
+    val list = JarExtractor.getClassNames(prefix.replace('.','/'),containsAll)
 
     <div>
     <p><span style="font-size:x-large;">{list.size}</span> classes</p>
-    <ul>{list.map{ name => 
+    <p>{
+      if(containsAll){
+        <a href={"/"+prefix }>change only outer classes</a>
+      }else{
+        <a href={"/"+prefix+"?"+ALL_CLASS}>change all classes(contain inner classes)</a>
+      }
+    }</p>
+    <ul>{list.map{ name =>
       <li><a href={ name } >{name}</a><a class={SVG_LINK} href={ name + ".svg"}>SVG</a></li>
     }}</ul>
     </div>
@@ -69,7 +77,7 @@ class Front extends HttpServlet {
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>{title}</title>
-    <link rel="shortcut icon" href="./favicon.ico" /> 
+    <link rel="shortcut icon" href="./favicon.ico" />
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     <style type="text/css">
       { STYLE }
