@@ -22,7 +22,7 @@ object ClassDiagramBuild extends Build{
   // TODO util-thrift dependencies unresolve :(
   val twitterUtils = Seq(
     "codec","zk","logging","reflect","zk-common","core","hashing","eval","collection"
-  ).map{n => "com.twitter" %% ("util-"+n) % "1.12.13" }
+  ).map{n => "com.twitter" %% ("util-"+n) % "2.0.0" }
 
   lazy val root = Project(projectName, file("."),
     settings = {
