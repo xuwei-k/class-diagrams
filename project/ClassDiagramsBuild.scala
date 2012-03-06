@@ -11,7 +11,7 @@ object ClassDiagramBuild extends Build{
   val unfilteredProjects = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
     "netty","json","netty-websockets","oauth","spec","scalatest"
-  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.5.3"}
+  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.6.1"}
 
   val liftProjects = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
@@ -35,7 +35,7 @@ object ClassDiagramBuild extends Build{
              sd
             ,"org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "container"
             ,"javax.servlet" % "servlet-api" % "2.5"
-            ,"org.scalatra" %% "scalatra" % "2.0.2"
+            ,"org.scalatra" %% "scalatra" % "2.0.3"
             ,"org.jruby" % "jruby" % "1.6.5"
             ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
             ,"org.specs2" %% "specs2" % "1.6.1"
@@ -60,16 +60,18 @@ object ClassDiagramBuild extends Build{
            ,"xuwei-k repo" at "http://xuwei-k.github.com/mvn"
            ,"twitter repo" at "http://maven.twttr.com"
            ,"guicefruit" at "http://guiceyfruit.googlecode.com/svn/repo/releases/"
-           ,ScalaToolsSnapshots
+           ,"okomok releases" at "http://okomok.github.com/maven-repo/releases"
+           ,"typesafe" at "http://repo.typesafe.com/typesafe/releases"
            ,"akka" at "http://akka.io/repository"
+/*
+           ,ScalaToolsSnapshots
            ,Resolver.url(
              "typesafe ivy release",
              new URL("http://typesafe.artifactoryonline.com/typesafe/ivy-releases")
            )(Resolver.ivyStylePatterns)
-           ,"okomok releases" at "http://okomok.github.com/maven-repo/releases"
-//         ,"Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-//         ,"typesafe snapshot" at "http://typesafe.artifactoryonline.com/typesafe/ivy-snapshots/"
-//         ,"typesafe releases" at "http://typesafe.artifactoryonline.com/typesafe/ivy-releases"
+           ,"Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+           ,"typesafe snapshot" at "http://typesafe.artifactoryonline.com/typesafe/ivy-snapshots/"
+*/
          )
         ,addCompilerPlugin("org.scala-tools.sxr" %% "sxr" % "0.2.8-SNAPSHOT")
         ,scalacOptions <+= scalaSource in Compile map { "-P:sxr:base-directory:" + _.getAbsolutePath }
