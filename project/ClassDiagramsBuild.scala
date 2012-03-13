@@ -53,7 +53,8 @@ object ClassDiagramBuild extends Build{
             ,"se.scalablesolutions.akka" % "akka" % "1.2"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
-          ) ++ unfilteredProjects ++ liftProjects ++ mirah ++ twitterUtils
+            ,"play" %% "play" % "2.0"
+          ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils // ++ mirah
         }
         ,resolvers ++= Seq(
             "Sonatype Nexus Releases" at "https://oss.sonatype.org/content/repositories/releases"
