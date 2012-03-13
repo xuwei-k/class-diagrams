@@ -2,9 +2,10 @@ package xuwei_k.classDiagram
 
 object URLMap{
 
-  private[this] val SBT_SXR = "http://harrah.github.com/xsbt/latest/sxr/"
-  private[this] val GITHUB_SCALA_2_9_1 = "https://github.com/scala/scala/blob/v2.9.1/src/"
-  private[this] val LINE1 = ".scala#L1"
+  @inline final val GITHUB = "https://github.com/"
+  @inline final val SBT_SXR = "http://harrah.github.com/xsbt/latest/sxr/"
+  @inline final val GITHUB_SCALA_2_9_1 = GITHUB + "scala/scala/blob/v2.9.1/src/"
+  @inline final val LINE1 = ".scala#L1"
 
   def apply(name: String):String = {
     val fullName = name.split("""\$""").head
@@ -42,6 +43,8 @@ object URLMap{
       "http://scala-tools.org/mvnsites/liftweb-2.4/#"+ fullName
     } else if (s("android.")){
       "http://developer.android.com/reference/" + path.replace('$','.') + ".html"
+    } else if (s("play.")){
+      GITHUB + "playframework/Play20/tree/2.0/framework/src/play/src/main/scala/" + path + LINE1
     } else ""
   }
 }
