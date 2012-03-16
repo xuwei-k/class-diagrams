@@ -35,7 +35,7 @@ object ClassDiagramBuild extends Build{
              sd
             ,"org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "container"
             ,"javax.servlet" % "servlet-api" % "2.5"
-            ,"org.scalatra" %% "scalatra" % "2.0.3"
+            ,"org.scalatra" %% "scalatra" % "2.0.4"
             ,"org.jruby" % "jruby" % "1.6.5"
             ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
             ,"org.specs2" %% "specs2" % "1.6.1"

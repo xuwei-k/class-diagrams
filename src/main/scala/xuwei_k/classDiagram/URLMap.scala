@@ -45,6 +45,8 @@ object URLMap{
       "http://developer.android.com/reference/" + path.replace('$','.') + ".html"
     } else if (s("play.")){
       GITHUB + "playframework/Play20/tree/2.0/framework/src/play/src/main/scala/" + path + LINE1
+    } else if (s("org.scalatra.")){
+      GITHUB + "scalatra/scalatra/blob/2.0.4/core/src/main/scala/" + path + LINE1
     } else ""
   }
 }
