@@ -47,6 +47,8 @@ object URLMap{
       GITHUB + "playframework/Play20/tree/2.0/framework/src/play/src/main/scala/" + path + LINE1
     } else if (s("org.scalatra.")){
       GITHUB + "scalatra/scalatra/blob/2.0.4/core/src/main/scala/" + path + LINE1
+    } else if (s("clojure.lang")){
+      GITHUB + "clojure/clojure/blob/clojure-1.3.0/src/jvm/" + path + ".java#L1"
     } else ""
   }
 }
