@@ -22,7 +22,7 @@ object ClassDiagramBuild extends Build{
   // TODO util-thrift dependencies unresolve :(
   val twitterUtils = Seq(
     "codec","zk","logging","reflect","zk-common","core","hashing","eval","collection"
-  ).map{n => "com.twitter" %% ("util-"+n) % "2.0.0" }
+  ).map{n => "com.twitter" %% ("util-"+n) % "3.0.0" }
 
   lazy val root = Project(projectName, file("."),
     settings = {
@@ -38,7 +38,7 @@ object ClassDiagramBuild extends Build{
             ,"org.scalatra" %% "scalatra" % "2.0.4"
             ,"org.jruby" % "jruby" % "1.6.5"
             ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
-            ,"org.specs2" %% "specs2" % "1.6.1"
+            ,"org.specs2" %% "specs2" % "1.9"
             ,"org.clojure" % "clojure" % "1.3.0"
 //            ,"org.codehaus.groovy" % "groovy" % "1.8.2"
             ,"org.scala-lang" % "scala-compiler" % ScalaV
@@ -47,9 +47,9 @@ object ClassDiagramBuild extends Build{
             ,"org.scalaz" %% "scalaz-full" % "6.0.4"
             ,"org.scalaj" %% "scalaj-http" % "0.2.9"
             ,"com.foursquare" %% "rogue" % "1.1.1"
-            ,"org.scalaxb" %% "scalaxb" % "0.6.7"
+            ,"org.scalaxb" %% "scalaxb" % "0.6.8"
             ,"com.codecommit" %% "anti-xml" % "0.3"
-            ,"org.scala-tools" %% "scala-stm" % "0.4"
+            ,"org.scala-tools" %% "scala-stm" % "0.5"
             ,"se.scalablesolutions.akka" % "akka" % "1.2"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
