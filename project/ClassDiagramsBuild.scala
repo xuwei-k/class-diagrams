@@ -11,7 +11,7 @@ object ClassDiagramBuild extends Build{
   val unfilteredProjects = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
     "netty","json","netty-websockets","oauth","spec","scalatest"
-  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.6.1"}
+  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.6.3"}
 
   val liftProjects = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
@@ -45,15 +45,15 @@ object ClassDiagramBuild extends Build{
             ,"org.scala-lang" % "scalap" % ScalaV
             ,"org.scala-lang" % "jline" % ScalaV
             ,"org.scalaz" %% "scalaz-full" % "6.0.4"
-            ,"org.scalaj" %% "scalaj-http" % "0.2.9"
-            ,"com.foursquare" %% "rogue" % "1.1.1"
+            ,"org.scalaj" %% "scalaj-http" % "0.3.1"
+            ,"com.foursquare" %% "rogue" % "1.1.8"
             ,"org.scalaxb" %% "scalaxb" % "0.6.8"
             ,"com.codecommit" %% "anti-xml" % "0.3"
             ,"org.scala-tools" %% "scala-stm" % "0.5"
             ,"se.scalablesolutions.akka" % "akka" % "1.2"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
-            ,"play" %% "play" % "2.0"
+            ,"play" %% "play" % "2.0.1"
           ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils // ++ mirah
         }
         ,resolvers ++= Seq(
@@ -65,7 +65,6 @@ object ClassDiagramBuild extends Build{
            ,"typesafe" at "http://repo.typesafe.com/typesafe/releases"
            ,"akka" at "http://akka.io/repository"
 /*
-           ,ScalaToolsSnapshots
            ,Resolver.url(
              "typesafe ivy release",
              new URL("http://typesafe.artifactoryonline.com/typesafe/ivy-releases")
