@@ -54,6 +54,7 @@ object ClassDiagramBuild extends Build{
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
             ,"play" %% "play" % "2.0.1"
+            ,"com.m3" % "scalaflavor4j" % "1.0.3"
           ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils // ++ mirah
         }
         ,resolvers ++= Seq(
