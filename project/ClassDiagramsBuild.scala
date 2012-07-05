@@ -50,10 +50,9 @@ object ClassDiagramBuild extends Build{
             ,"org.scalaxb" %% "scalaxb" % "0.6.8"
             ,"com.codecommit" %% "anti-xml" % "0.3"
             ,"org.scala-tools" %% "scala-stm" % "0.5"
-            ,"se.scalablesolutions.akka" % "akka" % "1.2"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
-            ,"play" %% "play" % "2.0.1"
+            ,"play" %% "play" % "2.0.2"
             ,"com.m3" % "scalaflavor4j" % "1.0.3"
           ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils // ++ mirah
         }
