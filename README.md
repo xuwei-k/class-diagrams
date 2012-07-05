@@ -1,4 +1,4 @@
-# Class Diagrams
+# Class Diagrams [![Build Status](https://secure.travis-ci.org/xuwei-k/class-diagrams.png)](http://travis-ci.org/xuwei-k/class-diagrams)
 
 * class diagrams generator on Google App Engine
 
