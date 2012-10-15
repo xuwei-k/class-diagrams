@@ -31,7 +31,7 @@ object ClassDiagramBuild extends Build{
       Seq(
         scalaVersion := ScalaV ,
         libraryDependencies <++= sbtDependency{ sd =>
-          Seq(
+          {Seq(
              sd
             ,"org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "container"
             ,"javax.servlet" % "servlet-api" % "2.5"
@@ -55,6 +55,11 @@ object ClassDiagramBuild extends Build{
             ,"play" %% "play" % "2.0.2"
             ,"com.m3" % "scalaflavor4j" % "1.0.3"
           ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils // ++ mirah
+          }.map{_.excludeAll(
+            ExclusionRule(organization = "com.sun.jdmk"),
+            ExclusionRule(organization = "com.sun.jmx"),
+            ExclusionRule(organization = "javax.jms")
+          )}
         }
         ,resolvers ++= Seq(
             "Sonatype Nexus Releases" at "https://oss.sonatype.org/content/repositories/releases"
