@@ -47,7 +47,7 @@ object ClassDiagramBuild extends Build{
             ,"org.scalaz" %% "scalaz-full" % "6.0.4"
             ,"org.scalaj" %% "scalaj-http" % "0.3.2"
             ,"com.foursquare" %% "rogue" % "1.1.8"
-            ,"org.scalaxb" %% "scalaxb" % "0.6.8"
+            ,"org.scalaxb" %% "scalaxb" % "0.7.3"
             ,"com.codecommit" %% "anti-xml" % "0.3"
             ,"org.scala-tools" %% "scala-stm" % "0.6"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
