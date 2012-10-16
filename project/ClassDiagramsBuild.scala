@@ -11,7 +11,7 @@ object ClassDiagramBuild extends Build{
   val unfilteredProjects = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
     "netty","json","netty-websockets","oauth","spec","scalatest"
-  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.6.3"}
+  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.6.4"}
 
   val liftProjects = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
@@ -38,18 +38,18 @@ object ClassDiagramBuild extends Build{
             ,"org.scalatra" %% "scalatra" % "2.0.4"
             ,"org.jruby" % "jruby" % "1.6.5"
             ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
-            ,"org.specs2" %% "specs2" % "1.9"
+            ,"org.specs2" %% "specs2" % "1.12.2"
             ,"org.clojure" % "clojure" % "1.3.0"
 //            ,"org.codehaus.groovy" % "groovy" % "1.8.2"
             ,"org.scala-lang" % "scala-compiler" % ScalaV
             ,"org.scala-lang" % "scalap" % ScalaV
             ,"org.scala-lang" % "jline" % ScalaV
             ,"org.scalaz" %% "scalaz-full" % "6.0.4"
-            ,"org.scalaj" %% "scalaj-http" % "0.3.1"
+            ,"org.scalaj" %% "scalaj-http" % "0.3.2"
             ,"com.foursquare" %% "rogue" % "1.1.8"
             ,"org.scalaxb" %% "scalaxb" % "0.6.8"
             ,"com.codecommit" %% "anti-xml" % "0.3"
-            ,"org.scala-tools" %% "scala-stm" % "0.5"
+            ,"org.scala-tools" %% "scala-stm" % "0.6"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
             ,"play" %% "play" % "2.0.2"
