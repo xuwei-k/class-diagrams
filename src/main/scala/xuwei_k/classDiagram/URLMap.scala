@@ -49,6 +49,10 @@ object URLMap{
       GITHUB + "scalatra/scalatra/blob/2.0.4/core/src/main/scala/" + path + LINE1
     } else if (s("clojure.lang")){
       GITHUB + "clojure/clojure/blob/clojure-1.3.0/src/jvm/" + path + ".java#L1"
+    } else if (s("com.github.okomok.ken")){
+      GITHUB + "okomok/ken/blob/0.1.0/src/main/scala/" + path + ".scala#L1"
+    } else if (s("com.github.okomok.sing")){
+      GITHUB + "okomok/sing/blob/0.1.0/src/main/scala/" + path.replace("com/github/okomok/sing/","") + ".scala#L1"
     } else ""
   }
 }
