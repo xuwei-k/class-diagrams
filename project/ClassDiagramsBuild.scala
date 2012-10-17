@@ -51,6 +51,7 @@ object ClassDiagramBuild extends Build{
             ,"com.codecommit" %% "anti-xml" % "0.3"
             ,"org.scala-tools" %% "scala-stm" % "0.6"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
+            ,"com.github.okomok" %% "ken" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
             ,"play" %% "play" % "2.0.2"
             ,"com.m3" % "scalaflavor4j" % "1.0.3"
