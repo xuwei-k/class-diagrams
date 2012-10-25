@@ -76,6 +76,7 @@ class Front extends HttpServlet {
 <html lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
     <title>{title}</title>
     <link rel="shortcut icon" href="./favicon.ico" />
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>

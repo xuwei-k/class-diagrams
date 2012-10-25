@@ -46,7 +46,7 @@ case class HTML(
   import HTML._
 
   val contentType = "text/html"
-  val doctype = "<!DOCTYPE html>" 
+  val doctype = "<!DOCTYPE html>"
   val toXML = {
     <html lang="en">
       {header(title)}
@@ -63,6 +63,7 @@ object HTML {
   def header(title:String):Node = {
     <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+      <meta name="robots" content="noindex,nofollow" />
       <title>{ title }</title>
       <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     </head>
