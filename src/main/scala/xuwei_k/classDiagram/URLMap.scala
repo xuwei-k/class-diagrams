@@ -22,7 +22,7 @@ object URLMap{
     } else if (s("scala.")) {
        GITHUB_SCALA_2_9_1 + "library/" + path + LINE1
     } else if (s("java")) {
-      "http://java.sun.com/javase/6/docs/api/" + path + ".html"
+      "http://docs.oracle.com/javase/7/docs/api/" + path + ".html"
     } else if (s("org.jruby")){
       "http://www.jruby.org/apidocs/" + path + ".html"
     } else if (s("groovy")){
