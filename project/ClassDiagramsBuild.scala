@@ -33,13 +33,13 @@ object ClassDiagramBuild extends Build{
         libraryDependencies <++= sbtDependency{ sd =>
           {Seq(
              sd
-            ,"org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "container"
+            ,"org.eclipse.jetty" % "jetty-webapp" % "7.6.8.v20121106" % "container"
             ,"javax.servlet" % "servlet-api" % "2.5"
             ,"org.scalatra" %% "scalatra" % "2.0.4"
-            ,"org.jruby" % "jruby" % "1.6.5"
+            ,"org.jruby" % "jruby" % "1.7.1"
             ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
-            ,"org.specs2" %% "specs2" % "1.12.2"
-            ,"org.clojure" % "clojure" % "1.3.0"
+            ,"org.specs2" %% "specs2" % "1.12.3"
+            ,"org.clojure" % "clojure" % "1.4.0"
 //            ,"org.codehaus.groovy" % "groovy" % "1.8.2"
             ,"org.scala-lang" % "scala-compiler" % ScalaV
             ,"org.scala-lang" % "scalap" % ScalaV
@@ -53,7 +53,7 @@ object ClassDiagramBuild extends Build{
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
             ,"com.github.okomok" %% "ken" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
-            ,"play" %% "play" % "2.0.2"
+            ,"play" %% "play" % "2.0.4"
             ,"com.m3" % "scalaflavor4j" % "1.0.3"
           ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils // ++ mirah
           }.map{_.excludeAll(
