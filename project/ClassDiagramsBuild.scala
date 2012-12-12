@@ -3,9 +3,6 @@ import Keys._
 
 object ClassDiagramBuild extends Build{
 
-  val sourceCount    = TaskKey[Unit]("source-count")
-  val createSxrSlide = TaskKey[Unit]("create-sxr-slide")
-
   val projectName = "class-diagrams"
   val ScalaV = "2.9.1"
   val unfilteredProjects = Seq(
@@ -64,7 +61,6 @@ object ClassDiagramBuild extends Build{
         }
         ,resolvers ++= Seq(
             "Sonatype Nexus Releases" at "https://oss.sonatype.org/content/repositories/releases"
-           ,"xuwei-k repo" at "http://xuwei-k.github.com/mvn"
            ,"twitter repo" at "http://maven.twttr.com"
            ,"guicefruit" at "http://guiceyfruit.googlecode.com/svn/repo/releases/"
            ,"okomok releases" at "http://okomok.github.com/maven-repo/releases"
@@ -79,33 +75,9 @@ object ClassDiagramBuild extends Build{
            ,"typesafe snapshot" at "http://typesafe.artifactoryonline.com/typesafe/ivy-snapshots/"
 */
          )
-        ,addCompilerPlugin("org.scala-tools.sxr" %% "sxr" % "0.2.8-SNAPSHOT")
-        ,scalacOptions <+= scalaSource in Compile map { "-P:sxr:base-directory:" + _.getAbsolutePath }
-        ,sourceCount <<= ( sources in Compile , sources in Test ) map{ (main,test) =>
-           println{
-             "\nmain " + main.map{f => IO.readLines(f).size}.sum +
-             "\ntest " + test.map{f => IO.readLines(f).size}.sum
-           }
-        }
-        ,createSxrSlide <<= ( sources in Compile , sources in Test ) map{ (main,test) =>
-          Seq(main -> "main" ,test -> "test" ).foreach{ case (files,n) =>
-            IO.write( file("../slide") / n , create(SxrBaseURL + n + "/",files.map{_.getName}) )
-          }
-        }
       )
     }
   )
-
-  val SxrBaseURL = "http://xuwei-k.github.com/" + projectName + "/"
-
-  def dom(src:String,w:Int,h:Int):xml.Elem = {
-    <iframe src={src} width={w.toString} height={h.toString} />
-  }
-
-  def create(baseURL:String,files:Seq[String],w:Int = 1200,h:Int = 600):String = {
-    files.map{ f =>
-      "\n\n!SLIDE\n\n" + dom( baseURL + f , w , h )
-    }.mkString
-  }
+  
 }
 
