@@ -77,6 +77,8 @@ object ClassDiagramBuild extends Build{
          )
       )
     }
+  ).dependsOn(
+    uri("git://github.com/ekmett/magpie.git")
   )
   
 }
