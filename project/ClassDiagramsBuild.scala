@@ -21,6 +21,10 @@ object ClassDiagramBuild extends Build{
     "codec","zk","logging","reflect","zk-common","core","hashing","eval","collection"
   ).map{n => "com.twitter" %% ("util-"+n) % "3.0.0" }
 
+  val scalamock = Seq("scalatest","specs2").map{ n =>
+    "org.scalamock" %% ("scalamock-" + n + "-support") % "2.4"
+  }
+
   lazy val root = Project(projectName, file("."),
     settings = {
       Defaults.defaultSettings ++
@@ -52,7 +56,7 @@ object ClassDiagramBuild extends Build{
             ,"com.google.android" % "android" % "2.1.2"
             ,"play" %% "play" % "2.0.4"
             ,"com.m3" % "scalaflavor4j" % "1.0.3"
-          ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils // ++ mirah
+          ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils ++ scalamock
           }.map{_.excludeAll(
             ExclusionRule(organization = "com.sun.jdmk"),
             ExclusionRule(organization = "com.sun.jmx"),
