@@ -56,6 +56,7 @@ object ClassDiagramBuild extends Build{
             ,"com.google.android" % "android" % "2.1.2"
             ,"play" %% "play" % "2.0.4"
             ,"com.m3" % "scalaflavor4j" % "1.0.3"
+            ,"org.twitter4j" % "twitter4j-core" % "3.0.2"
           ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils ++ scalamock
           }.map{_.excludeAll(
             ExclusionRule(organization = "com.sun.jdmk"),
