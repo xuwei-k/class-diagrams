@@ -48,15 +48,15 @@ object ClassDiagramBuild extends Build{
             ,"org.scalaz" %% "scalaz-full" % "6.0.4"
             ,"org.scalaj" %% "scalaj-http" % "0.3.2"
             ,"com.foursquare" %% "rogue" % "1.1.8"
-            ,"org.scalaxb" %% "scalaxb" % "0.7.3"
+            ,"org.scalaxb" %% "scalaxb" % "1.0.0"
             ,"com.codecommit" %% "anti-xml" % "0.3"
             ,"org.scala-tools" %% "scala-stm" % "0.6"
             ,"com.github.okomok" % "sing_2.9.0" % "0.1.0"
             ,"com.github.okomok" %% "ken" % "0.1.0"
             ,"com.google.android" % "android" % "2.1.2"
             ,"play" %% "play" % "2.0.4"
-            ,"com.m3" % "scalaflavor4j" % "1.0.3"
-            ,"org.twitter4j" % "twitter4j-core" % "3.0.2"
+            ,"com.m3" % "scalaflavor4j" % "1.0.4"
+            ,"org.twitter4j" % "twitter4j-core" % "3.0.3"
           ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils ++ scalamock
           }.map{_.excludeAll(
             ExclusionRule(organization = "com.sun.jdmk"),
