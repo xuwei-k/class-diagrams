@@ -8,7 +8,7 @@ object ClassDiagramBuild extends Build{
   val unfilteredProjects = Seq(
     "filter","filter-async","agents","uploads","util","jetty","jetty-ajp","netty-server",
     "netty","json","netty-websockets","oauth","spec","scalatest"
-  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.6.4"}
+  ).map{n => "net.databinder" %% ("unfiltered-" + n ) % "0.6.5"}
 
   val liftProjects = Seq(
     "common","json","actor","util","json-scalaz","json-ext"
@@ -37,8 +37,8 @@ object ClassDiagramBuild extends Build{
             ,"org.eclipse.jetty" % "jetty-webapp" % "7.6.8.v20121106" % "container"
             ,"javax.servlet" % "servlet-api" % "2.5"
             ,"org.scalatra" %% "scalatra" % "2.0.4"
-            ,"org.jruby" % "jruby" % "1.7.1"
-            ,"com.mongodb.casbah" %% "casbah-core" % "2.1.5-1"
+            ,"org.jruby" % "jruby" % "1.7.2"
+            ,"org.mongodb" %% "casbah-core" % "2.5.0"
             ,"org.specs2" %% "specs2" % "1.12.3"
             ,"org.clojure" % "clojure" % "1.4.0"
 //            ,"org.codehaus.groovy" % "groovy" % "1.8.2"
