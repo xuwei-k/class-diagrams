@@ -57,6 +57,8 @@ object ClassDiagramBuild extends Build{
             ,"play" %% "play" % "2.0.4"
             ,"com.m3" % "scalaflavor4j" % "1.0.4"
             ,"org.twitter4j" % "twitter4j-core" % "3.0.3"
+            ,"org.squeryl" %% "squeryl" % "0.9.5-6"
+            ,"org.fusesource.scalate" % "scalate-core_2.9" % "1.6.1"
           ) ++ unfilteredProjects ++ liftProjects ++ twitterUtils ++ scalamock
           }.map{_.excludeAll(
             ExclusionRule(organization = "com.sun.jdmk"),
