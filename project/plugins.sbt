@@ -1,7 +1,1 @@
-resolvers ++= Seq(
-  "spray repo" at "http://repo.spray.cc",
-  Resolver.url("sbt-plugin-releases",
-    url("http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)
-)
-
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.1.0")
+addSbtPlugin("com.eed3si9n" % "sbt-appengine" % "0.6.1")

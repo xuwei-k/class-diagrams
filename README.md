@@ -14,12 +14,3 @@ http://class-diagrams.appspot.com/scala.collection.immutable.List
 
 ![Scala List](https://github.com/xuwei-k/class-diagrams/raw/master/List.png)
 
-## Sxr
-
-### main
-* http://xuwei-k.github.com/class-diagrams/main/index.html
-
-### test
-* http://xuwei-k.github.com/class-diagrams/test/index.html
-
-

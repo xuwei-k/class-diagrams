@@ -74,7 +74,7 @@ object DiagramService {
    * ClassNodeのListをソートし、グループ分け
    * (それぞれのlevelの値を変化させる)
    */
-  private def sortByInheritance(classList: List[ClassNode]): List[Pair[Int, List[ClassNode]]] = {
+  private def sortByInheritance(classList: List[ClassNode]): List[(Int, List[ClassNode])] = {
 
     @annotation.tailrec
     def loop(m: List[ClassNode]) {

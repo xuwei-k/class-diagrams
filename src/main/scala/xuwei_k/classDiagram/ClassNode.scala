@@ -94,7 +94,7 @@ object ClassNode {
   private val recH = h - 160 //四角形の高さ
 
   //線をひくのをやめるやつ
-  lazy val exceptList = List("scala.ScalaObject", "java.lang.Object").map { Class.forName }
+  lazy val exceptList = List("java.lang.Object").map { Class.forName }
 
   @inline private implicit def int2String(e: Any): String = e.toString
 }
