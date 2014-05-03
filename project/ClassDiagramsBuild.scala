@@ -22,6 +22,7 @@ object ClassDiagramBuild extends Build{
       ("org.scala-lang" % "scalap" % scalaVersion.value) ::
       ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.0.6") ::
       ("org.json4s" %% "json4s-native" % "3.2.9") ::
+      ("net.debasishg" %% "redisclient" % "2.13") ::
       Nil
     ).map(_.excludeAll(
       ExclusionRule(organization = "com.sun.jdmk"),
