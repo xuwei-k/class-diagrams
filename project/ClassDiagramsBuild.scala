@@ -17,7 +17,7 @@ object ClassDiagramBuild extends Build{
       ("javax.servlet" % "servlet-api" % "2.5") ::
       ("org.scalatest" %% "scalatest" % "2.1.7") ::
       ("org.specs2" %% "specs2" % "2.3.12") ::
-      ("com.typesafe.akka" %% "akka-actor" % "2.3.2") ::
+      ("com.typesafe.akka" %% "akka-actor" % "2.3.3") ::
       ("org.scala-lang" % "scala-compiler" % scalaVersion.value) ::
       ("org.scala-lang" % "scalap" % scalaVersion.value) ::
       ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0-M7") ::
