@@ -8,44 +8,46 @@ import scala.xml._
  * @param level 自身のsubclassが多いほど大きくなる
  * @param parents 直接の親のリスト
  */
-case class ClassNode(clazz: Class[_], var level: Int, yoko: Int, parents: List[Class[_]]) extends math.Ordered[ClassNode] {
+case class ClassNode(clazz: Class[_], level: Int, yoko: Int, parents: List[Class[_]]) {
   import ClassNode._
 
   /** 間接的なものも含めた、すべての親 */
   lazy val allParents = getAllClassAndTrait(this.clazz)
 
-  /**
-   * 比べた結果を返すというより、内部状態を変化させるため
-   */
-  override def compare(that: ClassNode): Int = {
+  def cmp(that: ClassNode): List[ClassNode] = {
+    def noChange = this :: that :: Nil
     if (this.parents.contains(that.clazz)) {
       if (that.parents.contains(this.clazz)) {
         throw new Error("循環参照？ " + this.clazz + " " + that.clazz)
       } else {
         if (that.level <= this.level) {
-          that.level = this.level + 1
+          this :: that.copy(level = this.level + 1) :: Nil
+        } else {
+          noChange
         }
-        1
       }
     } else {
       if (that.parents.contains(this.clazz)) {
         if (that.level >= this.level) {
-          this.level = that.level + 1
+          this.copy(level = that.level + 1) :: that :: Nil
+        }else{
+          noChange
         }
-        -1
       } else {
         if (this.allParents.contains(that.clazz)) {
           if (that.level <= this.level) {
-            that.level = this.level + 1
+            this :: that.copy(level = this.level + 1) :: Nil
+          }else{
+            noChange
           }
-          1
         } else if (that.allParents.contains(this.clazz)) {
           if (that.level >= this.level) {
-            this.level = that.level + 1
+            this.copy(level = that.level + 1) :: that :: Nil
+          } else {
+            noChange
           }
-          -1
         } else {
-          0
+          noChange
         }
       }
     }
@@ -61,7 +63,7 @@ case class ClassNode(clazz: Class[_], var level: Int, yoko: Int, parents: List[C
     val baseY = level * h
     val middleX = baseX + (recW / 2)
     val simpleName = clazz.getSimpleName
-    val tmpSize = (recW * 2) / (simpleName.length)
+    val tmpSize = (recW * 2) / simpleName.length
     val fontSize = if (tmpSize < maxFontSize) { tmpSize } else { maxFontSize }
 
     <g>

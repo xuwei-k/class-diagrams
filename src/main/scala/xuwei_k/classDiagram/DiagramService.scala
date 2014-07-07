@@ -41,12 +41,6 @@ object DiagramService {
           classes.map { c => ClassNode(c, 0, 0, c.getSuperclass :: c.getInterfaces.toList) }
       }.distinct.filter { c => !ClassNode.exceptList.contains(c.clazz) })
 
-    //デバック用表示
-/*  result.foreach {
-      case (n, list) =>
-        println(n, list.size, list.map { _.clazz.getSimpleName })
-    }
-*/
     //横の位置計算して決めて、ClassNodeオブジェクトのフィールドに保存
     val allClassNodes =
       result.flatMap {
@@ -74,23 +68,22 @@ object DiagramService {
    * (それぞれのlevelの値を変化させる)
    */
   private def sortByInheritance(classList: List[ClassNode]): List[(Int, List[ClassNode])] = {
+    def levelMap(nodes: List[ClassNode]): Map[Int, Int] =
+      nodes.distinct.map{_.level}.groupBy(identity).mapValues{_.size}
 
     @annotation.tailrec
-    def loop(m: List[ClassNode]) {
-      def levelMap():Map[Int,Int] = m.map{_.level}.groupBy(identity).mapValues{_.size}
+    def loop(m: List[ClassNode]): List[ClassNode] = {
+      val newNodes = {
+        for (x <- m; y <- m) yield x.cmp(y)
+      }.flatten.groupBy(_.clazz).values.map(_.maxBy(_.level)).toList
 
-      val oldMap = levelMap()
-      for (x <- m; y <- m){ 
-        x.compare(y)
-      }
-
-      if( oldMap != levelMap() ){ 
-        loop(m)
+      if(levelMap(m) == levelMap(newNodes)){
+        m
+      }else{
+        loop(newNodes)
       }
     }
 
-    loop(classList)
-
-    classList.groupBy { _.level }.toList.sortBy(_._1)
+    loop(classList).groupBy { _.level }.toList.sortBy(_._1)
   }
 }
