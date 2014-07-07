@@ -8,13 +8,11 @@ import scala.xml._
  * @param level 自身のsubclassが多いほど大きくなる
  * @param parents 直接の親のリスト
  */
-case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extends math.Ordered[ClassNode] {
+case class ClassNode(clazz: Class[_], var level: Int, yoko: Int, parents: List[Class[_]]) extends math.Ordered[ClassNode] {
   import ClassNode._
 
   /** 間接的なものも含めた、すべての親 */
   lazy val allParents = getAllClassAndTrait(this.clazz)
-
-  var yoko = 0
 
   /**
    * 比べた結果を返すというより、内部状態を変化させるため
@@ -56,7 +54,7 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
   private lazy val fullName = clazz.getName
   private val url = URLMap(fullName)
 
-  def toXml: Node = {
+  def toXml(allClassNodes: List[ClassNode]): Node = {
     val packageFontSize = 10
     val maxFontSize = 18
     val baseX = yoko * w
@@ -87,7 +85,6 @@ case class ClassNode(clazz: Class[_], var level: Int, parents: Class[_]*) extend
 }
 
 object ClassNode {
-  var allClassNodes: List[ClassNode] = Nil // TODO change val ! this is not thread save ?
   private val w = 120 //基準位置の横幅
   private val h = 200 //基準位置の縦幅
   private val recW = w - 20 //四角形の幅

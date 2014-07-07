@@ -38,7 +38,7 @@ object DiagramService {
     val result =
       sortByInheritance({
         classes.flatMap { makeClassNodes }.toList ++
-          classes.map { c => ClassNode(c, 0, { c.getSuperclass :: c.getInterfaces.toList }: _*) }
+          classes.map { c => ClassNode(c, 0, 0, c.getSuperclass :: c.getInterfaces.toList) }
       }.distinct.filter { c => !ClassNode.exceptList.contains(c.clazz) })
 
     //デバック用表示
@@ -48,16 +48,15 @@ object DiagramService {
     }
 */
     //横の位置計算して決めて、ClassNodeオブジェクトのフィールドに保存
-    ClassNode.allClassNodes =
+    val allClassNodes =
       result.flatMap {
         case (_, list) =>
           //        list.zipWithIndex.map{ case (data,n) => data.yoko = n * (((data.level*1.6).asInstanceOf[Int])%2 + 1 ) }
-          list.zipWithIndex.map { case (data, n) => data.yoko = rand(n, data.level) }
-          list
+          list.zipWithIndex.map { case (data, n) => data.copy(yoko = rand(n, data.level)) }
       }
 
     //xmlに変換
-    ClassNode.allClassNodes.filterNot { x => ClassNode.exceptList.contains(x) }.map { _.toXml }
+    allClassNodes.filterNot { x => ClassNode.exceptList.contains(x) }.map { _.toXml(allClassNodes) }
   }
 
   /** (ソートしてない)ClassNodeのList作成
@@ -66,7 +65,7 @@ object DiagramService {
     getAllClassAndTrait(clazz).map { x =>
       val interfaces = x.getInterfaces.toList
       val classes = Option(x.getSuperclass).map{_ :: interfaces }.getOrElse(interfaces)
-      ClassNode(x, 0, classes: _*)
+      ClassNode(x, 0, 0, classes)
     }
   }
 
