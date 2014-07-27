@@ -22,7 +22,7 @@ object ClassDiagramBuild extends Build{
       ("org.eclipse.jetty" % "jetty-webapp" % "7.6.15.v20140411" % "container") ::
       ("com.chuusai" %% "shapeless" % "2.0.0") ::
       ("org.scala-lang.modules" %% "scala-async" % "0.9.2") ::
-      ("org.scalikejdbc" %% "scalikejdbc" % "2.0.6") ::
+      ("org.scalikejdbc" %% "scalikejdbc" % "2.0.7") ::
       ("com.github.scopt" %% "scopt" % "3.2.0") ::
       ("javax.servlet" % "servlet-api" % "2.5") ::
       ("org.scalatest" %% "scalatest" % "2.2.0") ::
@@ -30,7 +30,7 @@ object ClassDiagramBuild extends Build{
       ("com.typesafe.akka" %% "akka-actor" % "2.3.4") ::
       ("org.scala-lang" % "scala-compiler" % scalaVersion.value) ::
       ("org.scala-lang" % "scalap" % scalaVersion.value) ::
-      ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0-RC1") ::
+      ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0-RC2") ::
       ("org.json4s" %% "json4s-native" % "3.2.10") ::
       ("net.debasishg" %% "redisclient" % "2.13") ::
       Nil
