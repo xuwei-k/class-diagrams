@@ -7,7 +7,17 @@ object ClassDiagramBuild extends Build{
     sbtappengine.Plugin.appengineSettings: _*
   ).settings(
     scalaVersion := "2.11.2",
-    scalacOptions ++= Seq("-deprecation", "-Xlint", "-unchecked", "-language:_", "-Ywarn-unused", "-Ywarn-unused-import"),
+    scalacOptions ++= (
+      "-deprecation" ::
+      "-unchecked" ::
+      "-Xlint" ::
+      "-language:existentials" ::
+      "-language:higherKinds" ::
+      "-language:implicitConversions" ::
+      "-Ywarn-unused" ::
+      "-Ywarn-unused-import" ::
+      Nil
+    ),
     libraryDependencies ++= (
       ("org.eclipse.jetty" % "jetty-webapp" % "7.6.15.v20140411" % "container") ::
       ("com.chuusai" %% "shapeless" % "2.0.0") ::
