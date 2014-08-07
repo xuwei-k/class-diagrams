@@ -3,9 +3,9 @@ package xuwei_k.classDiagram
 object URLMap{
 
   @inline final val GITHUB = "https://github.com/"
-  @inline final val GITHUB_SCALA = GITHUB + "scala/scala/blob/v2.11.1/src/"
+  @inline final val GITHUB_SCALA = GITHUB + "scala/scala/blob/v2.11.2/src/"
   @inline final val LINE1 = ".scala#L1"
-  private[this] val SCALAZ_GITHUB = "http://github.com/scalaz/scalaz/blob/v7.1.0-M7/"
+  private[this] val SCALAZ_GITHUB = "http://github.com/scalaz/scalaz/blob/v7.1.0/"
 
   def apply(name: String):String = {
     val fullName = name.split("""\$""").head
@@ -35,7 +35,7 @@ object URLMap{
       }
       SCALAZ_GITHUB + module + "/src/main/scala/" + path + ".scala"
     } else if (s("specs2.") || s("org.specs2.")){
-      "http://etorreborre.github.io/specs2/api/SPECS2-2.3.12/index.html#" + fullName
+      "http://etorreborre.github.io/specs2/api/SPECS2-2.4/index.html#" + fullName
     } else ""
   }
 }

@@ -25,12 +25,12 @@ object ClassDiagramBuild extends Build{
       ("org.scalikejdbc" %% "scalikejdbc" % "2.0.7") ::
       ("com.github.scopt" %% "scopt" % "3.2.0") ::
       ("javax.servlet" % "servlet-api" % "2.5") ::
-      ("org.scalatest" %% "scalatest" % "2.2.0") ::
-//      ("org.specs2" %% "specs2" % "2.3.12") ::
+      ("org.scalatest" %% "scalatest" % "2.2.1") ::
+      ("org.specs2" %% "specs2" % "2.4") ::
       ("com.typesafe.akka" %% "akka-actor" % "2.3.4") ::
       ("org.scala-lang" % "scala-compiler" % scalaVersion.value) ::
       ("org.scala-lang" % "scalap" % scalaVersion.value) ::
-      ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0-RC2") ::
+      ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0") ::
       ("org.json4s" %% "json4s-native" % "3.2.10") ::
       ("net.debasishg" %% "redisclient" % "2.13") ::
       Nil
