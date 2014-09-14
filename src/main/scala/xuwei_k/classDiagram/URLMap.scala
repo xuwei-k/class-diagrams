@@ -35,7 +35,7 @@ object URLMap{
       }
       SCALAZ_GITHUB + module + "/src/main/scala/" + path + ".scala"
     } else if (s("specs2.") || s("org.specs2.")){
-      "http://etorreborre.github.io/specs2/api/SPECS2-2.4/index.html#" + fullName
+      "http://etorreborre.github.io/specs2/api/SPECS2-2.4.2/index.html#" + fullName
     } else ""
   }
 }
