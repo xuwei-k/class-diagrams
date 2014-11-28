@@ -20,6 +20,7 @@ object ClassDiagramBuild extends Build{
       Nil
     ),
     libraryDependencies ++= (
+      ("org.msgpack" % "msgpack-core" % "0.7.0-p2") ::
       ("org.eclipse.jetty" % "jetty-webapp" % "7.6.15.v20140411" % "container") ::
       ("com.chuusai" %% "shapeless" % "2.0.0") ::
       ("org.scala-lang.modules" %% "scala-async" % "0.9.2") ::
