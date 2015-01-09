@@ -6,7 +6,7 @@ object ClassDiagramBuild extends Build{
   val root = Project("class-diagrams", file(".")).settings(
     sbtappengine.Plugin.appengineSettings: _*
   ).settings(
-    scalaVersion := "2.11.2",
+    scalaVersion := "2.11.5",
     updateOptions ~= {_.withConsolidatedResolution(true)},
     scalacOptions ++= (
       "-deprecation" ::
