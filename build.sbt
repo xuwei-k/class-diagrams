@@ -14,6 +14,8 @@ scalacOptions ++= (
   Nil
 )
 
+resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases"
+
 libraryDependencies ++= (
   ("org.msgpack" % "msgpack-core" % "0.7.0-p7") ::
   ("com.chuusai" %% "shapeless" % "2.1.0") ::
