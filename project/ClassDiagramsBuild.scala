@@ -6,7 +6,7 @@ object ClassDiagramBuild extends Build{
   val root = Project("class-diagrams", file(".")).settings(
     sbtappengine.Plugin.appengineSettings: _*
   ).settings(
-    scalaVersion := "2.11.5",
+    scalaVersion := "2.11.6",
     updateOptions ~= {_.withConsolidatedResolution(true)},
     scalacOptions ++= (
       "-deprecation" ::
@@ -20,21 +20,21 @@ object ClassDiagramBuild extends Build{
       Nil
     ),
     libraryDependencies ++= (
-      ("org.msgpack" % "msgpack-core" % "0.7.0-p2") ::
+      ("org.msgpack" % "msgpack-core" % "0.7.0-p7") ::
       ("org.eclipse.jetty" % "jetty-webapp" % "7.6.15.v20140411" % "container") ::
-      ("com.chuusai" %% "shapeless" % "2.0.0") ::
-      ("org.scala-lang.modules" %% "scala-async" % "0.9.2") ::
-      ("org.scalikejdbc" %% "scalikejdbc" % "2.1.1") ::
-      ("com.github.scopt" %% "scopt" % "3.2.0") ::
+      ("com.chuusai" %% "shapeless" % "2.1.0") ::
+      ("org.scala-lang.modules" %% "scala-async" % "0.9.3") ::
+      ("org.scalikejdbc" %% "scalikejdbc" % "2.2.4") ::
+      ("com.github.scopt" %% "scopt" % "3.3.0") ::
       ("javax.servlet" % "servlet-api" % "2.5") ::
-      ("org.scalatest" %% "scalatest" % "2.2.2") ::
-      ("org.specs2" %% "specs2" % "2.4.2") ::
-      ("com.typesafe.akka" %% "akka-actor" % "2.3.6") ::
+      ("org.scalatest" %% "scalatest" % "2.2.4") ::
+      ("org.specs2" %% "specs2" % "3.0") ::
+      ("com.typesafe.akka" %% "akka-actor" % "2.3.9") ::
       ("org.scala-lang" % "scala-compiler" % scalaVersion.value) ::
       ("org.scala-lang" % "scalap" % scalaVersion.value) ::
-      ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.0") ::
-      ("org.json4s" %% "json4s-native" % "3.2.10") ::
-      ("net.debasishg" %% "redisclient" % "2.13") ::
+      ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.1") ::
+      ("org.json4s" %% "json4s-native" % "3.2.11") ::
+      ("net.debasishg" %% "redisclient" % "2.14") ::
       Nil
     ).map(_.excludeAll(
       ExclusionRule(organization = "com.sun.jdmk"),
