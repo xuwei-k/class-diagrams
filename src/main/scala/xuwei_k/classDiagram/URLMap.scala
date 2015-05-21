@@ -5,7 +5,7 @@ object URLMap{
   @inline final val GITHUB = "https://github.com/"
   @inline final val GITHUB_SCALA = GITHUB + "scala/scala/blob/v2.11.6/src/"
   @inline final val LINE1 = ".scala#L1"
-  private[this] val SCALAZ_GITHUB = "http://github.com/scalaz/scalaz/blob/v7.1.0/"
+  private[this] val SCALAZ_GITHUB = "http://github.com/scalaz/scalaz/blob/v7.1.2/"
 
   def apply(name: String):String = {
     val fullName = name.split("""\$""").head

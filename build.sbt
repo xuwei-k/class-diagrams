@@ -28,7 +28,7 @@ libraryDependencies ++= (
   ("com.typesafe.akka" %% "akka-actor" % "2.3.9") ::
   ("org.scala-lang" % "scala-compiler" % scalaVersion.value) ::
   ("org.scala-lang" % "scalap" % scalaVersion.value) ::
-  ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.1") ::
+  ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.2") ::
   ("org.json4s" %% "json4s-native" % "3.2.11") ::
   ("net.debasishg" %% "redisclient" % "2.14") ::
   Nil
