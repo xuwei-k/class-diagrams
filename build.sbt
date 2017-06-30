@@ -1,6 +1,6 @@
 name := "class-diagrams"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.12.2"
 
 scalacOptions ++= (
   "-deprecation" ::
@@ -14,26 +14,16 @@ scalacOptions ++= (
   Nil
 )
 
-resolvers += "Scalaz Bintray Repo" at "http://dl.bintray.com/scalaz/releases"
-
 libraryDependencies ++= (
-  ("org.msgpack" % "msgpack-core" % "0.7.0-p7") ::
-  ("com.chuusai" %% "shapeless" % "2.1.0") ::
-  ("org.scala-lang.modules" %% "scala-async" % "0.9.3") ::
-  ("org.scalikejdbc" %% "scalikejdbc" % "2.2.4") ::
-  ("com.github.scopt" %% "scopt" % "3.3.0") ::
-  ("javax.servlet" % "servlet-api" % "2.5") ::
-  ("org.scalatest" %% "scalatest" % "2.2.4") ::
-  ("org.specs2" %% "specs2" % "3.0") ::
-  ("com.typesafe.akka" %% "akka-actor" % "2.3.9") ::
+  ("com.chuusai" %% "shapeless" % "2.3.2") ::
+  ("org.scalikejdbc" %% "scalikejdbc" % "3.0.1") ::
+  ("com.github.scopt" %% "scopt" % "3.6.0") ::
+  ("javax.servlet" % "javax.servlet-api" % "3.1.0") ::
+  ("org.scalatest" %% "scalatest" % "3.0.3") ::
+  ("org.specs2" %% "specs2-core" % "3.9.1") ::
+  ("com.typesafe.akka" %% "akka-actor" % "2.5.3") ::
   ("org.scala-lang" % "scala-compiler" % scalaVersion.value) ::
   ("org.scala-lang" % "scalap" % scalaVersion.value) ::
-  ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.1.2") ::
-  ("org.json4s" %% "json4s-native" % "3.2.11") ::
-  ("net.debasishg" %% "redisclient" % "2.14") ::
+  ("org.scalaz" %% "scalaz-scalacheck-binding" % "7.2.14") ::
   Nil
-).map(_.excludeAll(
-  ExclusionRule(organization = "com.sun.jdmk"),
-  ExclusionRule(organization = "com.sun.jmx"),
-  ExclusionRule(organization = "javax.jms")
-))
+)

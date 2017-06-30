@@ -1,3 +1,3 @@
 appengineSettings
 
-libraryDependencies += "org.eclipse.jetty" % "jetty-webapp" % "7.6.15.v20140411" % "container"
+libraryDependencies += "org.eclipse.jetty" % "jetty-webapp" % "9.2.21.v20170120" % "container"
