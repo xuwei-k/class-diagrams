@@ -6,7 +6,7 @@ import scala.xml.{Elem,Node}
 class Front extends HttpServlet {
   val ALL_CLASS = "allclass"
 
-  override def doGet(req: HttpServletRequest, resp: HttpServletResponse) {
+  override def doGet(req: HttpServletRequest, resp: HttpServletResponse): Unit = {
 
     val uri  = req.getRequestURI
     val name = catching(classOf[Exception]).opt{ uri.tail.replace(".svg", "") }

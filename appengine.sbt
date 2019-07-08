@@ -1,3 +1,3 @@
-appengineSettings
+enablePlugins(AppenginePlugin)
 
-libraryDependencies += "org.eclipse.jetty" % "jetty-webapp" % "9.2.21.v20170120" % "container"
+libraryDependencies += "org.eclipse.jetty" % "jetty-webapp" % "9.4.19.v20190610" % "container"

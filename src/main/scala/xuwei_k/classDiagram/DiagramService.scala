@@ -33,7 +33,7 @@ object DiagramService {
     create(name, classes)
   }
 
-  private def create(name: String, classes: Traversable[Class[_]]): List[Node] = {
+  private def create(name: String, classes: Iterable[Class[_]]): List[Node] = {
 
     val result =
       sortByInheritance({
@@ -69,7 +69,7 @@ object DiagramService {
    */
   private def sortByInheritance(classList: List[ClassNode]): List[(Int, List[ClassNode])] = {
     def levelMap(nodes: List[ClassNode]): Map[Int, Int] =
-      nodes.distinct.map{_.level}.groupBy(identity).mapValues{_.size}
+      nodes.distinct.map{_.level}.groupBy(identity).view.mapValues(_.size).toMap
 
     @annotation.tailrec
     def loop(m: List[ClassNode]): List[ClassNode] = {

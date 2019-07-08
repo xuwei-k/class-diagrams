@@ -1,7 +1,7 @@
 package xuwei_k.classDiagram
 
 import java.util.jar.JarFile
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import java.io.File
 
 object JarExtractor{

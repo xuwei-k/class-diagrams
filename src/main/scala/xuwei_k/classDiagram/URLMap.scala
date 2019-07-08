@@ -3,9 +3,9 @@ package xuwei_k.classDiagram
 object URLMap{
 
   @inline final val GITHUB = "https://github.com/"
-  @inline final val GITHUB_SCALA = GITHUB + "scala/scala/blob/v2.12.2/src/"
+  @inline final val GITHUB_SCALA = GITHUB + "scala/scala/blob/v2.13.0/src/"
   @inline final val LINE1 = ".scala#L1"
-  private[this] val SCALAZ_GITHUB = "http://github.com/scalaz/scalaz/blob/v7.2.14/"
+  private[this] val SCALAZ_GITHUB = "http://github.com/scalaz/scalaz/blob/v7.2.28/"
 
   def apply(name: String):String = {
     val fullName = name.split("""\$""").head
@@ -20,7 +20,7 @@ object URLMap{
     } else if (s("scala.")) {
       GITHUB_SCALA + "library/" + path + LINE1
     } else if (s("java")) {
-      "http://docs.oracle.com/javase/8/docs/api/" + path + ".html"
+      "https://docs.oracle.com/javase/8/docs/api/" + path + ".html"
     } else if (s("scalaz")){
       val module = fullName.split('.')(1) match {
         case "concurrent" => "concurrent"
@@ -33,7 +33,7 @@ object URLMap{
       }
       SCALAZ_GITHUB + module + "/src/main/scala/" + path + ".scala"
     } else if (s("specs2.") || s("org.specs2.")){
-      "http://etorreborre.github.io/specs2/api/SPECS2-3.9.0/index.html#" + fullName
+      "https://etorreborre.github.io/specs2/api/SPECS2-4.6.0/index.html#" + fullName
     } else ""
   }
 }
